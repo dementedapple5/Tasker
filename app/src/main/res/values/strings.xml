@@ -18,6 +18,9 @@
     <string name="btn_add_task">add task</string>
     <string name="signup_title">SIGN UP</string>
     <string name="create_user_btn">SIGN UP</string>
-
+    <string name="edit_task_title">EDIT TASK</string>
+    <string name="edit_task_done">DONE</string>
+    <string name="edit_task_done_yes">YES</string>
+    <string name="edit_task_done_no">NO</string>
     <string name="task_attendant">Attendant</string>
 </resources>

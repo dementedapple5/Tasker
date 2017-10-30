@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         etUsername = (EditText) findViewById(R.id.et_username);
         etPassword = (EditText) findViewById(R.id.et_password);
         btnLogin = (Button) findViewById(R.id.btn_login);
@@ -41,8 +42,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
         else if (v==tvSignUp){
-            Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
+            Intent intent = new Intent(LoginActivity.this,AddTaskActivity.class);
             startActivity(intent);
         }
     }
+
+
 }
