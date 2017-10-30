@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="white_title">#ffffff</color>
+    <color name="major_prior_task">#B71C1C</color>
+    <color name="medium_prior_task">#0D47A1</color>
+    <color name="minor_prior_task">#1B5E20</color>
+</resources>

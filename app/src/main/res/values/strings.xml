@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Tasker</string>
+    <string name="login_text">LOGIN</string>
+    <string name="username_hint">USERNAME</string>
+    <string name="name_hint">NAME</string>
+    <string name="password_hint">PASSWORD</string>
+    <string name="re_password_hint">RETYPE PASSWORD</string>
+    <string name="not_signed_up_yet">Click here to SignUp</string>
+    <string name="remember_user">Remember me on this device</string>
+    <string name="add_task_title">ADD TASK</string>
+    <string name="task_title_hint">TITLE</string>
+    <string name="task_comment_hint">COMMENT</string>
+    <string name="task_desc_hint">DESCRIPTION</string>
+    <string name="task_priority_title">PRIORITIES</string>
+    <string name="task_priority_major">MAJOR</string>
+    <string name="task_priority_medium">MEDIUM</string>
+    <string name="task_priority_minor">MINOR</string>
+    <string name="btn_add_task">add task</string>
+    <string name="signup_title">SIGN UP</string>
+    <string name="create_user_btn">SIGN UP</string>
+
+    <string name="task_attendant">Attendant</string>
+</resources>
