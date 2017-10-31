@@ -23,4 +23,11 @@
     <string name="edit_task_done_yes">YES</string>
     <string name="edit_task_done_no">NO</string>
     <string name="task_attendant">Attendant</string>
+    <string name="titulo_frase">Titulo Frase</string>
+    <string name="texto_frase">Texto Frase</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="date">Date</string>
+    <string name="image_delete">image_delete</string>
+    <string name="image_edit">image_edit</string>
 </resources>
