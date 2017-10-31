@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.usuario.tasker.database.ConnectionSQLiteHelper;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etUsername, etPassword;
     private Button btnLogin;
@@ -18,6 +20,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ConnectionSQLiteHelper conn = new ConnectionSQLiteHelper(this, ConnectionSQLiteHelper.DATABASE_NAME,null,ConnectionSQLiteHelper.DATABASE_VERSION);
+
 
         etUsername = (EditText) findViewById(R.id.et_username);
         etPassword = (EditText) findViewById(R.id.et_password);
