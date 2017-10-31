@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.tasker.database.ConnectionSQLiteHelper;
+import com.example.usuario.tasker.utilities.Utilities;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etUsername, etPassword;
@@ -21,7 +22,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        ConnectionSQLiteHelper conn = new ConnectionSQLiteHelper(this, ConnectionSQLiteHelper.DATABASE_NAME,null,ConnectionSQLiteHelper.DATABASE_VERSION);
+
 
 
         etUsername = (EditText) findViewById(R.id.et_username);
@@ -47,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
         else if (v==tvSignUp){
-            Intent intent = new Intent(LoginActivity.this,AddTaskActivity.class);
+            Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
             startActivity(intent);
         }
     }
