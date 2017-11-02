@@ -8,13 +8,13 @@ public class User {
     private String username;
     private String name;
     private String password;
-    private boolean isAdmin;
+    private boolean admin;
 
     public User(String username, String password, String name) {
         this.username = username;
         this.password = password;
         this.name = name;
-        this.isAdmin = false;
+        this.admin = false;
     }
 
     public String getUsername() {
@@ -30,6 +30,8 @@ public class User {
     }
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
+
+
 }

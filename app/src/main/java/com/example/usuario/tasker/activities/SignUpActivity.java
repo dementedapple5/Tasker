@@ -48,7 +48,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         String rPassword = etRpassword.getText().toString().trim();
         String name = etName.getText().toString().trim();
 
-
         HashMap<String,String> users = conn.retrieveUsers();
         if (users.containsKey(username)){
             Toast.makeText(this, Utilities.USERNAME_REPEATED_MSG,Toast.LENGTH_LONG).show();
@@ -58,6 +57,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
                 conn.createUser(username,password,name);
                 this.cleanFields();
                 Toast.makeText(this, Utilities.SUCCESSFULL_USER_REGISTRATION,Toast.LENGTH_LONG).show();
+                finish();
             }else{
                 Toast.makeText(this, Utilities.PASSWORD_DONT_MATCH,Toast.LENGTH_LONG).show();
             }
