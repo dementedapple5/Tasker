@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.usuario.tasker.activities.TasksActivity">
+    tools:context="com.example.usuario.tasker.TasksActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,6 +26,7 @@
 
 
         <Button
+            android:id="@+id/btn_add_task"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -36,7 +37,7 @@
             android:textSize="@dimen/titles" />
     </RelativeLayout>
 
-     <ListView
+    <ListView
         android:id="@+id/lv_tasks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
