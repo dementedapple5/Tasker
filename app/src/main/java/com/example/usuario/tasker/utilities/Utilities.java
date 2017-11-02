@@ -21,4 +21,11 @@ public class Utilities {
     public static final String USER_NAME = "name";
     public static final String USER_PASSWORD = "password";
 
+
+    public static final String USERNAME_REPEATED_MSG = "Este nombre de usuario ya existe";
+    public static final String USERNAME_PASSWORD_INCORRECT = "Usuario o contraseña incorrecta";
+    public static final String PASSWORD_DONT_MATCH = "Las contraseñas no coinciden";
+    public static final String SUCCESSFULL_USER_REGISTRATION = "Usuario registrado correctamente";
+
+
 }

@@ -1,7 +1,9 @@
-package com.example.usuario.tasker;
+package com.example.usuario.tasker.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.usuario.tasker.R;
 
 public class EditTaskActivity extends AppCompatActivity {
 

@@ -1,8 +1,10 @@
-package com.example.usuario.tasker;
+package com.example.usuario.tasker.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+
+import com.example.usuario.tasker.R;
 
 public class AddTaskActivity extends AppCompatActivity {
     EditText etTitle, etComment, etDesc;
