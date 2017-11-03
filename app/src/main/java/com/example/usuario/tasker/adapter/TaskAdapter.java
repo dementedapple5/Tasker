@@ -3,8 +3,6 @@ package com.example.usuario.tasker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.constraint.ConstraintLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -94,18 +92,19 @@ public class TaskAdapter extends BaseAdapter {
 
         Task dir = items.get(position);
 
-        ConstraintLayout constraintLayout = (ConstraintLayout) v.findViewById(R.id.linearLayout2);
+
 
         int priority = dir.getPriority();
         if(priority == 1){
-            constraintLayout.setBackgroundColor(Color.RED);
+            view.setBackgroundResource(R.color.major_prior_task);
+
         }
         if (priority == 2){
-            constraintLayout.setBackgroundColor(Color.BLUE);
+            view.setBackgroundResource(R.color.medium_prior_task);
         }
 
         if (priority == 3){
-            constraintLayout.setBackgroundColor(Color.GREEN);
+            view.setBackgroundResource(R.color.minor_prior_task);
         }
 
 
