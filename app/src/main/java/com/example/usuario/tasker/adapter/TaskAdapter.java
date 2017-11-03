@@ -96,15 +96,15 @@ public class TaskAdapter extends BaseAdapter {
 
         int priority = dir.getPriority();
         if(priority == 1){
-            view.setBackgroundResource(R.color.major_prior_task);
+            v.setBackgroundResource(R.color.major_prior_task);
 
         }
         if (priority == 2){
-            view.setBackgroundResource(R.color.medium_prior_task);
+            v.setBackgroundResource(R.color.medium_prior_task);
         }
 
         if (priority == 3){
-            view.setBackgroundResource(R.color.minor_prior_task);
+            v.setBackgroundResource(R.color.minor_prior_task);
         }
 
 

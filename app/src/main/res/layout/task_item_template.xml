@@ -17,6 +17,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Título de la tarea"
+        android:textColor="@color/white_title"
         android:textSize="@dimen/sub_title"
         app:layout_constraintEnd_toStartOf="@+id/item_edit"
         app:layout_constraintHorizontal_bias="0.481"
@@ -31,6 +32,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/item_done"
         app:layout_constraintTop_toTopOf="parent"
+        android:tint="@color/white_title"
         app:srcCompat="@drawable/ic_delete_black_24dp" />
 
     <ImageView
@@ -41,6 +43,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toStartOf="@+id/item_delete"
         app:layout_constraintTop_toTopOf="parent"
+        android:tint="@color/white_title"
         app:srcCompat="@drawable/ic_edit_black_24dp" />
 
     <CheckBox
@@ -50,7 +53,10 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/WhiteCheck"
+
+         />
 
 
     <View
@@ -70,6 +76,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="Hay que hacer un backup del servidor"
+        android:textColor="@color/white_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view4" />
 
@@ -81,6 +88,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="31/10/2017"
+        android:textColor="@color/white_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toEndOf="@+id/item_description"
