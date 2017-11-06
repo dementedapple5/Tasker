@@ -34,4 +34,31 @@ public class Task {
         return sdf.format(date);
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public User getAttendant() {
+        return attendant;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public boolean isState() {
+        return state;
+    }
 }
