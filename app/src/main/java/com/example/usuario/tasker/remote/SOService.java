@@ -16,8 +16,8 @@ public interface SOService {
 
 
     @Multipart
-    @POST("revisar_usuarios.php")
-    Call<ResponseBody> userExists(@Part("username") String username, @Part("pass") String pass);
+    @POST("check_user.php")
+    Call<ResponseBody> userExists(@Part("username") RequestBody username, @Part("pass") RequestBody pass);
 
 
     @Multipart

@@ -20,6 +20,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.HashMap;
 
+import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -60,9 +61,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     public void login(){
-        String username = etUsername.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
+        String usernameStr = etUsername.getText().toString().trim();
+        String passwordStr = etPassword.getText().toString().trim();
         SOService service = ApiUtils.getSOService();
+        RequestBody username = RequestBody.create(MediaType.parse("text/plain"), usernameStr);
+        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), passwordStr);
         Call<ResponseBody> req = service.userExists(username,password);
 
         req.enqueue(new Callback<ResponseBody>() {
@@ -71,12 +74,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 try {
-                    Log.d("USEREXISTS Exito::", "" + response.body().string());
-                    result = response.body().string();
+                    result =response.body().string();
+                    Log.d("USEREXISTS Exito::", "" + result);
+                    Toast.makeText(LoginActivity.this, result,Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Toast.makeText(LoginActivity.this, result,Toast.LENGTH_LONG).show();
+
                 if(result.equals("1")){
                     Intent intent = new Intent(LoginActivity.this,TasksActivity.class);
                     startActivity(intent);
