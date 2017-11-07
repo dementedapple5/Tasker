@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class TasksActivity extends AppCompatActivity {
     Button btnAddTask;
     private ListView mTaskListView;
-    ArrayList<Task> tasks = new ArrayList<Task>();
+    ArrayList<Task> tasks = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,8 @@ public class TasksActivity extends AppCompatActivity {
     private void setup() {
 
         tasks.add(new Task("Reparar base de datos",new User("sac","1234","samuel"),"rapitdo","Hay que arreglar el estropicio de ayer",1));
-        tasks.add(new Task("Reparar base de datos",new User("sac","1234","samuel"),"rapitdo","Hay que arreglar el estropicio de ayer",1));
+        tasks.add(new Task("Hacer deberes",new User("sac","1234","samuel"),"rapitdo","Hay que arreglar el estropicio de ayer",2));
+        tasks.add(new Task("Tirar la basura",new User("sac","1234","samuel"),"rapitdo","Hay que arreglar el estropicio de ayer",3));
 
         btnAddTask = (Button) findViewById(R.id.btn_add_task);
         btnAddTask.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +46,14 @@ public class TasksActivity extends AppCompatActivity {
         lv.setAdapter(adapter);
 
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if(TaskAdapter.REQUEST_CODE==requestCode && resultCode==RESULT_OK){
+//
+//        }
+//    }
 }
 
 

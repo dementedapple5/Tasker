@@ -38,7 +38,11 @@
     </RelativeLayout>
 
     <ListView
+        android:paddingEnd="@dimen/defaultPadding"
+        android:paddingStart="@dimen/defaultPadding"
         android:id="@+id/lv_tasks"
+        android:layout_marginTop="10dp"
+        android:dividerHeight="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
     </ListView>

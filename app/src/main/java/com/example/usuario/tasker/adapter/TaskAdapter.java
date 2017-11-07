@@ -3,6 +3,7 @@ package com.example.usuario.tasker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,13 +24,15 @@ import java.util.ArrayList;
  * Created by Samuel on 31/10/2017.
  */
 
-public class TaskAdapter extends BaseAdapter {
+public class TaskAdapter extends BaseAdapter implements View.OnClickListener {
 
     protected Activity activity;
     protected ArrayList<Task> items;
     private ImageView delete;
     private ImageView edit;
     private CheckBox checked;
+    public final static int REQUEST_CODE = 1;
+    Task dir;
 
 
     public TaskAdapter(Activity activity, ArrayList<Task> items) {
@@ -64,47 +67,26 @@ public class TaskAdapter extends BaseAdapter {
             v = inf.inflate(R.layout.task_item_template, null);
         }
 
-        delete = (ImageView) v.findViewById(R.id.item_delete);
         edit = (ImageView) v.findViewById(R.id.item_edit);
         checked = (CheckBox) v.findViewById(R.id.item_done);
 
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Has eliminado ésta tarea", Toast.LENGTH_LONG).show();
-            }
-        });
 
-        edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), EditTaskActivity.class);
-                view.getContext().startActivity(intent);
-            }
-        });
+        edit.setOnClickListener(this);
+        checked.setOnClickListener(this);
 
-        checked.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Has completado ésta tarea", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        Task dir = items.get(position);
-
+        dir = items.get(position);
 
 
         int priority = dir.getPriority();
         if(priority == 1){
-            v.setBackgroundResource(R.color.major_prior_task);
-
+            v.setBackgroundResource(R.drawable.major_prior_task_border);
         }
         if (priority == 2){
-            v.setBackgroundResource(R.color.medium_prior_task);
+            v.setBackgroundResource(R.drawable.medium_prior_task_border);
         }
 
         if (priority == 3){
-            v.setBackgroundResource(R.color.minor_prior_task);
+            v.setBackgroundResource(R.drawable.minor_prior_task_border);
         }
 
 
@@ -120,4 +102,24 @@ public class TaskAdapter extends BaseAdapter {
         return v;
 
     }
+
+    @Override
+    public void onClick(View view) {
+        if (view.getId()==edit.getId()){
+            Intent intent = new Intent(view.getContext(), EditTaskActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putString("TASK_TITLE",items.get(1).getTitle());
+            bundle.putString("TASK_COMMENT",dir.getComment());
+            bundle.putString("TASK_DESC",dir.getDescription());
+            bundle.putInt("TASK_PRIOR",dir.getPriority());
+            intent.putExtras(bundle);
+            activity.startActivity(intent);
+        }else if(view.getId()==checked.getId()){
+            if(checked.isChecked()){
+                Toast.makeText(view.getContext(), "Has completado ésta tarea", Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
+
 }
