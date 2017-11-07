@@ -19,6 +19,15 @@ public interface SOService {
     @POST("check_user.php")
     Call<ResponseBody> userExists(@Part("username") RequestBody username, @Part("pass") RequestBody pass);
 
+    @Multipart
+    @POST("select_tasks.php")
+    Call<ResponseBody> select_tasks(@Part("username") RequestBody username);
+
+    @Multipart
+    @POST("create_tasks.php")
+    Call<Void> createTask(@Part("username") String username, @Part("title") String title, @Part("comment") String comment, @Part("des") String desc,@Part("prior") Integer prior);
+
+
 
     @Multipart
     @POST("create_user.php")

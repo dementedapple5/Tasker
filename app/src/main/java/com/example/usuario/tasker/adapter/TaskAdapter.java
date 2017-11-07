@@ -70,6 +70,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener {
         edit = (ImageView) v.findViewById(R.id.item_edit);
         checked = (CheckBox) v.findViewById(R.id.item_done);
 
+        edit.setTag(position);
 
         edit.setOnClickListener(this);
         checked.setOnClickListener(this);
@@ -108,10 +109,11 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener {
         if (view.getId()==edit.getId()){
             Intent intent = new Intent(view.getContext(), EditTaskActivity.class);
             Bundle bundle = new Bundle();
-            bundle.putString("TASK_TITLE",items.get(1).getTitle());
-            bundle.putString("TASK_COMMENT",dir.getComment());
-            bundle.putString("TASK_DESC",dir.getDescription());
-            bundle.putInt("TASK_PRIOR",dir.getPriority());
+            int position = (Integer)view.getTag();
+            bundle.putString("TASK_TITLE",items.get(position).getTitle());
+            bundle.putString("TASK_COMMENT",items.get(position).getComment());
+            bundle.putString("TASK_DESC",items.get(position).getDescription());
+            bundle.putInt("TASK_PRIOR",items.get(position).getPriority());
             intent.putExtras(bundle);
             activity.startActivity(intent);
         }else if(view.getId()==checked.getId()){

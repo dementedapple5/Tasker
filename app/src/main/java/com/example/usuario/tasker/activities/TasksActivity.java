@@ -18,20 +18,21 @@ public class TasksActivity extends AppCompatActivity {
     Button btnAddTask;
     private ListView mTaskListView;
     ArrayList<Task> tasks = new ArrayList<>();
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tasks);
-
+        username = (String) getIntent().getExtras().get("USERNAME");
         setup();
     }
 
     private void setup() {
 
-        tasks.add(new Task("Reparar base de datos",new User("sac","1234","samuel"),"rapitdo","Hay que arreglar el estropicio de ayer",1));
-        tasks.add(new Task("Hacer deberes",new User("sac","1234","samuel"),"rapitdo","Hay que arreglar el estropicio de ayer",2));
-        tasks.add(new Task("Tirar la basura",new User("sac","1234","samuel"),"rapitdo","Hay que arreglar el estropicio de ayer",3));
+        tasks.add(new Task("Reparar base de datos","pepin","rapitdo","Hay que arreglar el estropicio de ayer",1));
+        tasks.add(new Task("Hacer deberes","dani","rapitdo","Hay que arreglar el estropicio de ayer",2));
+        tasks.add(new Task("Tirar la basura","sac","rapitdo","Hay que arreglar el estropicio de ayer",3));
 
         btnAddTask = (Button) findViewById(R.id.btn_add_task);
         btnAddTask.setOnClickListener(new View.OnClickListener() {

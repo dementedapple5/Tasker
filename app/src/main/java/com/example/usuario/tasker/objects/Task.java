@@ -11,14 +11,14 @@ import java.util.Date;
 
 public class Task {
     private String title;
-    private User attendant;
+    private String attendant;
     private String comment;
     private String description;
     private int priority;
     private String creationDate;
     private boolean state;
 
-    public Task(String title, User attendant, String comment, String description, int priority) {
+    public Task(String title, String attendant, String comment, String description, int priority) {
         this.title = title;
         this.attendant = attendant;
         this.comment = comment;
@@ -38,7 +38,7 @@ public class Task {
         return title;
     }
 
-    public User getAttendant() {
+    public String getAttendant() {
         return attendant;
     }
 

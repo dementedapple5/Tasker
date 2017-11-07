@@ -83,6 +83,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 if(result.equals("1")){
                     Intent intent = new Intent(LoginActivity.this,TasksActivity.class);
+                    intent.putExtra("USERNAME",etUsername.getText().toString());
                     startActivity(intent);
                 }else{
                     Toast.makeText(getApplicationContext(), Utilities.USERNAME_PASSWORD_INCORRECT,Toast.LENGTH_LONG).show();
