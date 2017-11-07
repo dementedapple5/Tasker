@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.activities.EditTaskActivity;
+import com.example.usuario.tasker.activities.TasksActivity;
 import com.example.usuario.tasker.objects.Task;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  * Created by Samuel on 31/10/2017.
  */
 
-public class TaskAdapter extends BaseAdapter implements View.OnClickListener {
+public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
     protected Activity activity;
     protected ArrayList<Task> items;
@@ -73,7 +75,14 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener {
         edit.setTag(position);
 
         edit.setOnClickListener(this);
-        checked.setOnClickListener(this);
+        checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked){
+                    Toast.makeText(activity, "task done", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
         dir = items.get(position);
 
@@ -104,6 +113,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener {
 
     }
 
+
     @Override
     public void onClick(View view) {
         if (view.getId()==edit.getId()){
@@ -116,12 +126,9 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener {
             bundle.putInt("TASK_PRIOR",items.get(position).getPriority());
             intent.putExtras(bundle);
             activity.startActivity(intent);
-        }else if(view.getId()==checked.getId()){
-            if(checked.isChecked()){
-                Toast.makeText(view.getContext(), "Has completado ésta tarea", Toast.LENGTH_LONG).show();
-            }
         }
     }
+
 
 
 }

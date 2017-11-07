@@ -19,6 +19,7 @@
             android:layout_height="wrap_content"
             android:text="Título de la tarea"
             android:textSize="@dimen/link"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_marginTop="2dp"
             android:layout_weight="1"/>
 
