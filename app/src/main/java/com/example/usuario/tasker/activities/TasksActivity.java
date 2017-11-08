@@ -39,6 +39,7 @@ public class TasksActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TasksActivity.this,AddTaskActivity.class);
+                intent.putExtra("USERNAME",username);
                 TasksActivity.this.startActivity(intent);
             }
         });

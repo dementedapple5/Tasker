@@ -1,10 +1,10 @@
 package com.example.usuario.tasker.activities;
 
-import android.content.Intent;
+
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,9 +18,7 @@ import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.pojoObjects.UserPojo;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
-import com.google.gson.JsonObject;
 
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,15 +60,15 @@ public class AddTaskActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 switch (checkedId) {
                     case R.id.rb_major_prior:
-                        priority=1;
+                        priority = 1;
                         break;
 
                     case R.id.rb_medium_prior:
-                        priority=2;
+                        priority = 2;
                         break;
 
                     case R.id.rb_minor_prior:
-                        priority=3;
+                        priority = 3;
                         break;
 
                 }
@@ -117,12 +115,12 @@ public class AddTaskActivity extends AppCompatActivity {
 
 
         if (!validarTask()) {
-            Toast.makeText(getApplicationContext(),"No se ha validado el formulario",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "No se ha validado el formulario", Toast.LENGTH_LONG).show();
 
 
         } else {
             SOService service = ApiUtils.getSOService();
-            Call<Void> req = service.createTask(username,titleStr,comentStr,descriptionStr,priority);
+            Call<Void> req = service.createTask(username, titleStr, comentStr, descriptionStr, priority);
             req.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
