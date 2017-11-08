@@ -1,9 +1,19 @@
 package com.example.usuario.tasker.remote;
 
 
+import com.example.usuario.tasker.pojoObjects.TaskPojo;
+import com.example.usuario.tasker.pojoObjects.UserPojo;
+import com.google.gson.JsonObject;
+
+import org.json.JSONObject;
+
+import java.util.List;
+
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -19,14 +29,19 @@ public interface SOService {
     @POST("check_user.php")
     Call<ResponseBody> userExists(@Part("username") RequestBody username, @Part("pass") RequestBody pass);
 
-    @Multipart
+    @FormUrlEncoded
     @POST("select_tasks.php")
-    Call<ResponseBody> select_tasks(@Part("username") RequestBody username);
+    Call<List<TaskPojo>> select_tasks(@Part("username") String username);
 
     @Multipart
     @POST("create_tasks.php")
     Call<Void> createTask(@Part("username") String username, @Part("title") String title, @Part("comment") String comment, @Part("des") String desc,@Part("prior") Integer prior);
 
+
+
+    @FormUrlEncoded
+    @POST("select_users.php")
+    Call<List<UserPojo>> select_users();
 
 
     @Multipart
