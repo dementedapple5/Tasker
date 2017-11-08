@@ -29,7 +29,7 @@ public interface SOService {
     @POST("check_user.php")
     Call<ResponseBody> userExists(@Part("username") RequestBody username, @Part("pass") RequestBody pass);
 
-    @FormUrlEncoded
+    @Multipart
     @POST("select_tasks.php")
     Call<List<TaskPojo>> select_tasks(@Part("username") String username);
 
@@ -39,7 +39,7 @@ public interface SOService {
 
 
 
-    @FormUrlEncoded
+
     @POST("select_users.php")
     Call<List<UserPojo>> select_users();
 
