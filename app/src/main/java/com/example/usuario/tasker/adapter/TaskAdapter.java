@@ -87,7 +87,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
                     completeTask();
-                    Toast.makeText(activity, "task done", Toast.LENGTH_SHORT).show();
                 }
             }
         });
