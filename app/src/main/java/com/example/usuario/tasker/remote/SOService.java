@@ -41,6 +41,10 @@ public interface SOService {
     @POST("select_users.php")
     Call<List<UserPojo>> select_users();
 
+    @Multipart
+    @POST("task_done.php")
+    Call<Void> taskDone(@Part("username") String username, @Part("title") String title, @Part("fecha") String fecha);
+
 
     @Multipart
     @POST("create_user.php")

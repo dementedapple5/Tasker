@@ -19,8 +19,14 @@ import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.activities.EditTaskActivity;
 import com.example.usuario.tasker.activities.TasksActivity;
 import com.example.usuario.tasker.objects.Task;
+import com.example.usuario.tasker.remote.ApiUtils;
+import com.example.usuario.tasker.remote.SOService;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Samuel on 31/10/2017.
@@ -30,10 +36,10 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
     protected Activity activity;
     protected ArrayList<Task> items;
-    private ImageView delete;
     private ImageView edit;
     private CheckBox checked;
     public final static int REQUEST_CODE = 1;
+    private Context context;
     Task dir;
 
 
@@ -63,6 +69,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
 
         View v = view;
+        context = v.getContext();
 
         if (v == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -79,6 +86,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
+                    completeTask();
                     Toast.makeText(activity, "task done", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -113,6 +121,27 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
     }
 
+    public void completeTask(){
+
+
+            SOService service = ApiUtils.getSOService();
+            Call<Void> req = service.taskDone(dir.getAttendant(),dir.getTitle(),dir.getCreationDate());
+            req.enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    Toast.makeText(context, "Tarea completada", Toast.LENGTH_LONG).show();
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_LONG).show();
+
+                }
+            });
+
+
+    }
+
 
     @Override
     public void onClick(View view) {
@@ -129,6 +158,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             intent.putExtras(bundle);
             activity.startActivity(intent);
         }
+
     }
 
 
