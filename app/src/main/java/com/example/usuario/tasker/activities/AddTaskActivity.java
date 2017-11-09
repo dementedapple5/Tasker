@@ -103,6 +103,12 @@ public class AddTaskActivity extends AppCompatActivity {
             }
         });
 
+        btnAddTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addTask();
+            }
+        });
 
         btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
