@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 if(result.equals("1")){
-                    Intent intent = new Intent(LoginActivity.this,TasksActivity.class);
+                    Intent intent = new Intent(LoginActivity.this,TabbedTasks.class);
                     intent.putExtra("USERNAME",etUsername.getText().toString());
                     startActivity(intent);
                 }else{

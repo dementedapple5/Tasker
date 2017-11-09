@@ -1,5 +1,6 @@
 package com.example.usuario.tasker.activities.fragments;
 
+
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -16,13 +17,13 @@ import com.example.usuario.tasker.objects.Task;
 import java.util.ArrayList;
 
 
-public class ShowDoneTasks extends Fragment {
+public class ShowTodoTasks extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_show_done_tasks, container, false);
+        return inflater.inflate(R.layout.fragment_show_todo_tasks, container, false);
     }
 
     @Override
@@ -31,13 +32,9 @@ public class ShowDoneTasks extends Fragment {
         setup(TabbedTasks.tasks);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     private void setup(ArrayList<Task> tasks) {
-        ListView lv = getView().findViewById(R.id.lv_tasks_done);
+
+        ListView lv = getView().findViewById(R.id.lv_tasks_todo);
         TaskAdapter adapter = new TaskAdapter(getActivity(), tasks);
         lv.setAdapter(adapter);
 

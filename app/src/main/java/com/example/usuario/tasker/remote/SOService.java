@@ -34,8 +34,8 @@ public interface SOService {
     Call<List<TaskPojo>> select_tasks(@Part("username") String username);
 
     @Multipart
-    @POST("create_tasks.php")
-    Call<Void> createTask(@Part("username") String username, @Part("title") String title, @Part("comment") String comment, @Part("des") String desc,@Part("prior") Integer prior);
+    @POST("insert_tasks.php")
+    Call<Void> createTask(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("coments") RequestBody comment, @Part("contenido") RequestBody desc,@Part("prioridad") Integer prior,@Part("fecha") RequestBody date,@Part("estado") boolean state);
 
 
     @POST("select_users.php")

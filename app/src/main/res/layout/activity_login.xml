@@ -24,7 +24,7 @@
                 android:background="@color/colorPrimary"
                 android:gravity="center"
                 android:text="@string/login_text"
-                android:textColor="@color/white_title"
+                android:textColor="@color/white"
                 android:textSize="@dimen/titles" />
 
             <EditText

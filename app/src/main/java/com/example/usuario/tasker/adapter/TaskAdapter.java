@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.activities.EditTaskActivity;
-import com.example.usuario.tasker.activities.TasksActivity;
 import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
@@ -34,17 +33,16 @@ import retrofit2.Response;
 
 public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
-    protected Activity activity;
+    protected Context context;
     protected ArrayList<Task> items;
     private ImageView edit;
     private CheckBox checked;
     public final static int REQUEST_CODE = 1;
-    private Context context;
     Task dir;
 
 
-    public TaskAdapter(Activity activity, ArrayList<Task> items) {
-        this.activity = activity;
+    public TaskAdapter(Context context, ArrayList<Task> items) {
+        this.context = context;
         this.items = items;
     }
 
@@ -68,16 +66,12 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
     public View getView(int position, View view, ViewGroup viewGroup) {
 
 
-        View v = view;
-        context = v.getContext();
+        LayoutInflater inf = (LayoutInflater) viewGroup.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inf.inflate(R.layout.task_item_template, null);
 
-        if (v == null) {
-            LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inf.inflate(R.layout.task_item_template, null);
-        }
 
-        edit = (ImageView) v.findViewById(R.id.item_edit);
-        checked = (CheckBox) v.findViewById(R.id.item_done);
+        edit = (ImageView) view.findViewById(R.id.item_edit);
+        checked = (CheckBox) view.findViewById(R.id.item_done);
 
         edit.setTag(position);
 
@@ -96,27 +90,27 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
         int priority = dir.getPriority();
         if(priority == 1){
-            v.setBackgroundResource(R.drawable.major_prior_task_border);
+            view.setBackgroundResource(R.drawable.major_prior_task_border);
         }
         if (priority == 2){
-            v.setBackgroundResource(R.drawable.medium_prior_task_border);
+            view.setBackgroundResource(R.drawable.medium_prior_task_border);
         }
 
         if (priority == 3){
-            v.setBackgroundResource(R.drawable.minor_prior_task_border);
+            view.setBackgroundResource(R.drawable.minor_prior_task_border);
         }
 
 
-        TextView title = v.findViewById(R.id.item_title);
+        TextView title = view.findViewById(R.id.item_title);
         title.setText(dir.getTitle());
 
-        TextView description = v.findViewById(R.id.item_description);
+        TextView description = view.findViewById(R.id.item_description);
         description.setText(dir.getDescription());
 
-        TextView date = v.findViewById(R.id.item_date);
+        TextView date = view.findViewById(R.id.item_date);
         date.setText(dir.getCreationDate());
 
-        return v;
+        return view;
 
     }
 
@@ -155,7 +149,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             bundle.putInt("TASK_PRIOR",items.get(position).getPriority());
             bundle.putString("TASK_USER",items.get(position).getAttendant());
             intent.putExtras(bundle);
-            activity.startActivity(intent);
+            context.startActivity(intent);
         }
 
     }

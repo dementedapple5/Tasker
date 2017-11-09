@@ -13,7 +13,7 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="@string/add_task_title"
-        android:textColor="@color/white_title"
+        android:textColor="@color/white"
         android:textSize="@dimen/titles" />
 
     <EditText
@@ -48,7 +48,7 @@
 
     <EditText
         android:id="@+id/et_task_desc"
-        android:layout_width="346dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
