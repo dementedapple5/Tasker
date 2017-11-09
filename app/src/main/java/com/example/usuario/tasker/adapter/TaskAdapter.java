@@ -123,7 +123,9 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             bundle.putString("TASK_TITLE",items.get(position).getTitle());
             bundle.putString("TASK_COMMENT",items.get(position).getComment());
             bundle.putString("TASK_DESC",items.get(position).getDescription());
+            bundle.putString("TASK_DATE",items.get(position).getCreationDate());
             bundle.putInt("TASK_PRIOR",items.get(position).getPriority());
+            bundle.putString("TASK_USER",items.get(position).getAttendant());
             intent.putExtras(bundle);
             activity.startActivity(intent);
         }

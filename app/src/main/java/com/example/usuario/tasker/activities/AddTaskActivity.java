@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -49,7 +50,7 @@ public class AddTaskActivity extends AppCompatActivity {
         etTitle = (EditText) findViewById(R.id.et_task_name);
         etComment = (EditText) findViewById(R.id.et_task_comment);
         etDesc = (EditText) findViewById(R.id.et_task_desc);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroup = (RadioGroup) findViewById(R.id.et_radioButton);
         lastButton = (RadioButton) findViewById(R.id.rb_minor_prior);
         btnAddTask = (Button) findViewById(R.id.btn_add_task);
         userSpinner = (Spinner) findViewById(R.id.users_spinner);
@@ -99,6 +100,14 @@ public class AddTaskActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<UserPojo>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Carga de lista de usuarios fallida", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+        btnAddTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addTask();
             }
         });
 
