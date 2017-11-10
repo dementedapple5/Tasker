@@ -86,8 +86,13 @@ public class TaskPojo {
         this.contenido = contenido;
     }
 
-    public String getEstado() {
-        return estado;
+    public Boolean getEstado() {
+        if (estado.equals("0")){
+            return false;
+        }else {
+            return true;
+        }
+
     }
 
     public void setEstado(String estado) {

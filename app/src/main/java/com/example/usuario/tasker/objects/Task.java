@@ -28,6 +28,16 @@ public class Task {
         this.state = false;
     }
 
+    public Task(String title, String attendant, String comment, String description, int priority, String date, boolean state) {
+        this.title = title;
+        this.attendant = attendant;
+        this.comment = comment;
+        this.description = description;
+        this.priority = priority;
+        this.creationDate = date;
+        this.state = state;
+    }
+
     private static String setCreationDate(){
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -60,5 +70,18 @@ public class Task {
 
     public boolean isState() {
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", attendant='" + attendant + '\'' +
+                ", comment='" + comment + '\'' +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", creationDate='" + creationDate + '\'' +
+                ", state=" + state +
+                '}';
     }
 }

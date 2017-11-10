@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ import com.example.usuario.tasker.remote.SOService;
 
 import java.util.ArrayList;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -63,7 +66,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup viewGroup) {
+    public View getView(final int position, View view, ViewGroup viewGroup) {
 
 
         LayoutInflater inf = (LayoutInflater) viewGroup.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -80,7 +83,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
-                    completeTask();
+                    completeTask(position);
                 }
             }
         });
@@ -114,21 +117,25 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
     }
 
-    public void completeTask(){
+    public void completeTask(int position){
+        dir = items.get(position);
 
+        RequestBody attendant = RequestBody.create(MediaType.parse("text/plain"), dir.getAttendant());
+        RequestBody title = RequestBody.create(MediaType.parse("text/plain"), dir.getTitle());
+        RequestBody date = RequestBody.create(MediaType.parse("text/plain"), dir.getCreationDate());
 
             SOService service = ApiUtils.getSOService();
-            Call<Void> req = service.taskDone(dir.getAttendant(),dir.getTitle(),dir.getCreationDate());
+            final Call<Void> req = service.taskDone(attendant,title,date);
             req.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     Toast.makeText(context, "Tarea completada", Toast.LENGTH_LONG).show();
+                    Log.d("TITLE::",dir.getTitle());
                 }
 
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
                     Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_LONG).show();
-
                 }
             });
 

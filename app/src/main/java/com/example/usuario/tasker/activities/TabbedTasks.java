@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -64,14 +65,17 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
     }
 
+
     private void setupViewPager(ViewPager vp){
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        mSectionsPagerAdapter.addFragment(new ShowDoneTasks(),"done");
         mSectionsPagerAdapter.addFragment(new ShowTodoTasks(),"todo");
+        mSectionsPagerAdapter.addFragment(new ShowDoneTasks(),"done");
         vp.setAdapter(mSectionsPagerAdapter);
     }
 
-    private void addTasks(final ArrayList<Task> tasksDone,final ArrayList<Task> tasksTODO){
+    private void addTasks(final ArrayList<Task> tasksDONE,final ArrayList<Task> tasksTODO){
+        tasksDONE.clear();
+        tasksTODO.clear();
         RequestBody usernameRB = RequestBody.create(MediaType.parse("text/plain"), username);
 
         SOService service = ApiUtils.getSOService();
@@ -85,9 +89,10 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
 
                 for (TaskPojo taskPojo : users) {
-                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()));
+                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
                     tasksTODO.add(task);
                 }
+                Log.d("TAREAS-TODO:: ",tasksTODO.toString());
 
             }
             @Override
@@ -104,9 +109,10 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
 
                 for (TaskPojo taskPojo : users) {
-                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()));
-                    tasksDone.add(task);
+                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
+                    tasksDONE.add(task);
                 }
+                Log.d("TAREAS-DONE:: ",tasksDONE.toString());
 
             }
             @Override
@@ -114,10 +120,6 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
                 Toast.makeText(getApplicationContext(), "Carga de tareas fallida", Toast.LENGTH_LONG).show();
             }
         });
-
-        tasksDone.add(new Task("Reparar base de datos","pepin","rapitdo","Hay que arreglar el estropicio de ayer",1));
-        tasksDone.add(new Task("Hacer deberes","dani","rapitdo","Hay que arreglar el estropicio de ayer",2));
-        tasksDone.add(new Task("Tirar la basura","sac","rapitdo","Hay que arreglar el estropicio de ayer",3));
     }
 
 

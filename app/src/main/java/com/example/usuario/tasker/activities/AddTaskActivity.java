@@ -20,6 +20,7 @@ import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.pojoObjects.UserPojo;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 
 import java.util.ArrayList;
@@ -50,13 +51,13 @@ public class AddTaskActivity extends AppCompatActivity {
 
 
     private void setup() {
-        etTitle = (EditText) findViewById(R.id.et_task_name);
-        etComment = (EditText) findViewById(R.id.et_task_comment);
-        etDesc = (EditText) findViewById(R.id.et_task_desc);
-        radioGroup = (RadioGroup) findViewById(R.id.et_radioButton);
-        lastButton = (RadioButton) findViewById(R.id.rb_minor_prior);
-        btnAddTask = (Button) findViewById(R.id.btn_add_task);
-        userSpinner = (Spinner) findViewById(R.id.users_spinner);
+        etTitle = findViewById(R.id.et_task_name);
+        etComment =findViewById(R.id.et_task_comment);
+        etDesc = findViewById(R.id.et_task_desc);
+        radioGroup = findViewById(R.id.et_radioButton);
+        lastButton =  findViewById(R.id.rb_minor_prior);
+        btnAddTask =  findViewById(R.id.btn_add_task);
+        userSpinner =  findViewById(R.id.users_spinner);
 
         //Cambia la variable prioridad en funcion del boton que el usuario presione
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

@@ -31,11 +31,11 @@ public interface SOService {
 
     @Multipart
     @POST("select_tasks.php")
-    Call<List<TaskPojo>> select_tasks(@Part("username") RequestBody username);
+    Call<List<TaskPojo>> select_tasks(@Part("encargado") RequestBody username);
 
     @Multipart
     @POST("select_tasks_completed.php")
-    Call<List<TaskPojo>> select_tasks_completed(@Part("username") RequestBody username);
+    Call<List<TaskPojo>> select_tasks_completed(@Part("encargado") RequestBody username);
 
     @Multipart
     @POST("insert_tasks.php")
@@ -47,11 +47,11 @@ public interface SOService {
 
     @Multipart
     @POST("edit_tasks.php")
-    Call<Void> taskDone(@Part("username") RequestBody username, @Part("title") RequestBody title, @Part("fecha") RequestBody fecha);
+    Call<Void> taskDone(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha);
 
     @Multipart
     @POST("edit_tasks_all.php")
-    Call<Void> taskEdit(@Part("username") RequestBody username, @Part("title") RequestBody title, @Part("fecha") RequestBody fecha,@Part("coments") RequestBody coments,@Part("prioridad") RequestBody prioridad,@Part("contenido") RequestBody contenido,@Part("estado") RequestBody estado);
+    Call<Void> taskEdit(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha,@Part("coments") RequestBody coments,@Part("prioridad") RequestBody prioridad,@Part("contenido") RequestBody contenido,@Part("estado") RequestBody estado);
 
 
     @Multipart
