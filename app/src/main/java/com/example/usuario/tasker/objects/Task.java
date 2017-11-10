@@ -11,14 +11,14 @@ import java.util.Date;
 
 public class Task {
     private String title;
-    private User attendant;
+    private String attendant;
     private String comment;
     private String description;
     private int priority;
     private String creationDate;
     private boolean state;
 
-    public Task(String title, User attendant, String comment, String description, int priority) {
+    public Task(String title, String attendant, String comment, String description, int priority) {
         this.title = title;
         this.attendant = attendant;
         this.comment = comment;
@@ -26,6 +26,16 @@ public class Task {
         this.priority = priority;
         this.creationDate = setCreationDate();
         this.state = false;
+    }
+
+    public Task(String title, String attendant, String comment, String description, int priority, String date, boolean state) {
+        this.title = title;
+        this.attendant = attendant;
+        this.comment = comment;
+        this.description = description;
+        this.priority = priority;
+        this.creationDate = date;
+        this.state = state;
     }
 
     private static String setCreationDate(){
@@ -38,7 +48,7 @@ public class Task {
         return title;
     }
 
-    public User getAttendant() {
+    public String getAttendant() {
         return attendant;
     }
 
@@ -60,5 +70,18 @@ public class Task {
 
     public boolean isState() {
         return state;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "title='" + title + '\'' +
+                ", attendant='" + attendant + '\'' +
+                ", comment='" + comment + '\'' +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", creationDate='" + creationDate + '\'' +
+                ", state=" + state +
+                '}';
     }
 }

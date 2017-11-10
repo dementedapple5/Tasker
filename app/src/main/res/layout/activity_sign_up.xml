@@ -15,7 +15,7 @@
         android:textSize="@dimen/titles"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:textColor="@color/white_title"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

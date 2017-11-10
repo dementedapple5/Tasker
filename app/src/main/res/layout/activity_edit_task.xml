@@ -14,7 +14,7 @@
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:text="@string/edit_task_title"
-        android:textColor="@color/white_title"
+        android:textColor="@color/white"
         android:textSize="@dimen/titles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
 
 
     <RadioGroup
-        android:id="@+id/radioGroup"
+        android:id="@+id/et_radioButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -81,21 +81,21 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_priority">
 
         <RadioButton
-            android:id="@+id/rb_major_prior"
+            android:id="@+id/et_rb_major_prior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/task_priority_major"
             android:textColor="@color/major_prior_task" />
 
         <RadioButton
-            android:id="@+id/rb_medium_prior"
+            android:id="@+id/et_rb_medium_prior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/task_priority_medium"
             android:textColor="@color/medium_prior_task" />
 
         <RadioButton
-            android:id="@+id/rb_minor_prior"
+            android:id="@+id/et_rb_minor_prior"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/task_priority_minor"
@@ -104,7 +104,7 @@
     </RadioGroup>
 
     <Spinner
-        android:id="@+id/users_spinner"
+        android:id="@+id/et_users_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -112,53 +112,18 @@
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/et_radioButton" />
 
     <Button
-        android:id="@+id/btn_add_task"
+        android:id="@+id/et_btn_add_task"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="37dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="@string/btn_add_task"
+        android:text="@string/edit_task"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/ed_task_done"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginEnd="21dp"
-        android:text="@string/edit_task_done"
-        android:textSize="@dimen/sub_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/radioGroup2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="22dp"
-        android:layout_marginTop="26dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ed_task_done">
-
-        <RadioButton
-            android:id="@+id/ed_task_radioButton_yes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/edit_task_done_yes" />
-
-        <RadioButton
-            android:id="@+id/ed_task_radioButton_no"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/edit_task_done_no" />
-    </RadioGroup>
 
 </android.support.constraint.ConstraintLayout>

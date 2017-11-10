@@ -1,96 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:layout_editor_absoluteY="25dp">
+    android:padding="10dp">
 
-
-    <TextView
-        android:id="@+id/item_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Título de la tarea"
-        android:textColor="@color/white_title"
-        android:textSize="@dimen/sub_title"
-        app:layout_constraintEnd_toStartOf="@+id/item_edit"
-        app:layout_constraintHorizontal_bias="0.481"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/item_delete"
-        android:layout_width="37dp"
-        android:layout_height="@dimen/iconSize"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/item_done"
-        app:layout_constraintTop_toTopOf="parent"
-        android:tint="@color/white_title"
-        app:srcCompat="@drawable/ic_delete_black_24dp" />
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Título de la tarea"
+            android:textSize="@dimen/link"
+            android:textColor="@color/task_title"
+            android:layout_marginTop="2dp"
+            android:layout_weight="1"/>
 
-    <ImageView
-        android:id="@+id/item_edit"
-        android:layout_width="@dimen/iconSize"
-        android:layout_height="@dimen/iconSize"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/item_delete"
-        app:layout_constraintTop_toTopOf="parent"
-        android:tint="@color/white_title"
-        app:srcCompat="@drawable/ic_edit_black_24dp" />
+        <ImageView
+            android:id="@+id/item_edit"
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            app:srcCompat="@drawable/ic_edit_black_24dp"
+            android:layout_marginTop="4dp"/>
 
-    <CheckBox
-        android:id="@+id/item_done"
-        android:layout_width="@dimen/iconSize"
-        android:layout_height="@dimen/iconSize"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:theme="@style/WhiteCheck"
+        <CheckBox
+            android:id="@+id/item_done"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/iconSize"/>
 
-         />
-
+    </LinearLayout>
 
     <View
         android:id="@+id/view4"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:layout_marginTop="16dp"
-        android:background="#000"
-        app:layout_constraintTop_toBottomOf="@+id/item_title"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        android:background="#000" />
 
-    <TextView
-        android:id="@+id/item_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Hay que hacer un backup del servidor"
-        android:textColor="@color/white_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view4" />
 
-    <TextView
-        android:id="@+id/item_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="31/10/2017"
-        android:textColor="@color/white_title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
-        app:layout_constraintStart_toEndOf="@+id/item_description"
-        app:layout_constraintTop_toBottomOf="@+id/item_description" />
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Hay que hacer un backup del servidor" />
+
+        <TextView
+            android:id="@+id/item_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="31/10/2017"
+            android:layout_gravity="right"/>
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
