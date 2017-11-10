@@ -46,8 +46,12 @@ public interface SOService {
     Call<List<UserPojo>> select_users();
 
     @Multipart
-    @POST("task_done.php")
-    Call<Void> taskDone(@Part("username") String username, @Part("title") String title, @Part("fecha") String fecha);
+    @POST("edit_tasks.php")
+    Call<Void> taskDone(@Part("username") RequestBody username, @Part("title") RequestBody title, @Part("fecha") RequestBody fecha);
+
+    @Multipart
+    @POST("edit_tasks_all.php")
+    Call<Void> taskEdit(@Part("username") RequestBody username, @Part("title") RequestBody title, @Part("fecha") RequestBody fecha,@Part("coments") RequestBody coments,@Part("prioridad") RequestBody prioridad,@Part("contenido") RequestBody contenido,@Part("estado") RequestBody estado);
 
 
     @Multipart

@@ -3,6 +3,7 @@ package com.example.usuario.tasker.activities;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
+import com.example.usuario.tasker.objects.Task;
+import com.example.usuario.tasker.pojoObjects.TaskPojo;
 import com.example.usuario.tasker.pojoObjects.UserPojo;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
@@ -20,6 +23,8 @@ import com.example.usuario.tasker.remote.SOService;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -57,6 +62,14 @@ public class EditTaskActivity extends AppCompatActivity {
         etTaskDesc.setText(bundleR.getString("TASK_DESC"));
         date = bundleR.getString("TASK_DATE");
         userName = bundleR.getString("TASK_USER");
+
+
+        btnAddTask.setOnClickListener(new View.OnClickListener() {
+                                          @Override
+                                          public void onClick(View view) {
+                                              updateTask();
+                                          }
+                                      });
 
         //Cambia la variable prioridad en funcion del boton que el usuario presione
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -105,6 +118,34 @@ public class EditTaskActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Carga de lista de usuarios fallida", Toast.LENGTH_LONG).show();
             }
         });
+
+    }
+
+    private void updateTask() {
+
+        SOService service = ApiUtils.getSOService();
+        RequestBody usernameRB = RequestBody.create(MediaType.parse("text/plain"), userName);
+        RequestBody titleRB = RequestBody.create(MediaType.parse("text/plain"), etTaskTitle.getText().toString());
+        RequestBody dateRB = RequestBody.create(MediaType.parse("text/plain"), date);
+        RequestBody commentsRB = RequestBody.create(MediaType.parse("text/plain"), etTaskComment.getText().toString());
+        RequestBody prioritRB = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(priority));
+        RequestBody descriptionRB = RequestBody.create(MediaType.parse("text/plain"), etTaskDesc.getText().toString());
+        RequestBody stateRB = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(0));
+        Call<Void> req = service.taskEdit(usernameRB,titleRB,dateRB,commentsRB,prioritRB,descriptionRB,stateRB);
+
+        req.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+               Toast.makeText(getApplicationContext(),"Task edited",Toast.LENGTH_LONG).show();
+
+
+            }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Edicion de  tarea fallida", Toast.LENGTH_LONG).show();
+            }
+        });
+
     }
 
     private Boolean validarTask() {

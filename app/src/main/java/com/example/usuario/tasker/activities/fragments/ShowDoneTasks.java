@@ -40,7 +40,6 @@ public class ShowDoneTasks extends Fragment {
         ListView lv = getView().findViewById(R.id.lv_tasks_done);
         TaskAdapter adapter = new TaskAdapter(getActivity(), tasks);
         lv.setAdapter(adapter);
-
     }
 
 
