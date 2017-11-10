@@ -31,7 +31,11 @@ public interface SOService {
 
     @Multipart
     @POST("select_tasks.php")
-    Call<List<TaskPojo>> select_tasks(@Part("username") String username);
+    Call<List<TaskPojo>> select_tasks(@Part("username") RequestBody username);
+
+    @Multipart
+    @POST("select_tasks_completed.php")
+    Call<List<TaskPojo>> select_tasks_completed(@Part("username") RequestBody username);
 
     @Multipart
     @POST("insert_tasks.php")

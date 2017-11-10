@@ -28,7 +28,7 @@ public class ShowDoneTasks extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        setup(TabbedTasks.tasks);
+        setup(TabbedTasks.tasksDONE);
     }
 
     @Override

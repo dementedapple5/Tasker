@@ -23,13 +23,14 @@ public class ShowTodoTasks extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+        setup(TabbedTasks.tasksTODO);
+
         return inflater.inflate(R.layout.fragment_show_todo_tasks, container, false);
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        setup(TabbedTasks.tasks);
     }
 
     private void setup(ArrayList<Task> tasks) {
