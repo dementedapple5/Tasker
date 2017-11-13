@@ -18,6 +18,7 @@ import com.example.usuario.tasker.adapter.TaskAdapter;
 import com.example.usuario.tasker.objects.Task;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class ShowTodoTasks extends Fragment {
@@ -33,9 +34,10 @@ public class ShowTodoTasks extends Fragment {
 
 
 
-    private void setup(ArrayList<Task> tasks, View v) {
+    private void setup(HashSet<Task> tasks, View v) {
         ListView lv = v.findViewById(R.id.lv_tasks_todo);
-        TaskAdapter adapter = new TaskAdapter(v.getContext(), tasks);
+        ArrayList<Task> tareasTodo = new ArrayList<>(tasks);
+        TaskAdapter adapter = new TaskAdapter(v.getContext(), tareasTodo);
         lv.setAdapter(adapter);
     }
 
