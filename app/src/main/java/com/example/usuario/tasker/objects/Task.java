@@ -1,5 +1,7 @@
 package com.example.usuario.tasker.objects;
 
+import android.support.annotation.NonNull;
+
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.Date;
  * Created by Usuario on 26/10/2017.
  */
 
-public class Task {
+public class Task{
     private String title;
     private String attendant;
     private String comment;
@@ -84,4 +86,36 @@ public class Task {
                 ", state=" + state +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (priority != task.priority) return false;
+        if (state != task.state) return false;
+        if (title != null ? !title.equals(task.title) : task.title != null) return false;
+        if (attendant != null ? !attendant.equals(task.attendant) : task.attendant != null)
+            return false;
+        if (comment != null ? !comment.equals(task.comment) : task.comment != null) return false;
+        if (description != null ? !description.equals(task.description) : task.description != null)
+            return false;
+        return creationDate != null ? creationDate.equals(task.creationDate) : task.creationDate == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title != null ? title.hashCode() : 0;
+        result = 31 * result + (attendant != null ? attendant.hashCode() : 0);
+        result = 31 * result + (comment != null ? comment.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + priority;
+        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
+        result = 31 * result + (state ? 1 : 0);
+        return result;
+    }
+
+
 }

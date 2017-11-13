@@ -22,6 +22,7 @@ import com.example.usuario.tasker.remote.SOService;
 import com.example.usuario.tasker.utilities.SectionsPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -34,8 +35,8 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
     private FloatingActionButton addTaskFAB;
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    public static ArrayList<Task> tasksTODO = new ArrayList<>();
-    public static ArrayList<Task> tasksDONE = new ArrayList<>();
+    public static HashSet<Task> tasksTODO = new HashSet<>();
+    public static HashSet<Task> tasksDONE = new HashSet<>();
 
     private TabLayout tabs;
     private ViewPager mViewPager;
@@ -50,7 +51,7 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
         Intent intent = getIntent();
         username = intent.getStringExtra("USERNAME");
 
-        addTasks(tasksTODO,tasksDONE);
+
         mViewPager = findViewById(R.id.container);
 
         setupViewPager(mViewPager);
@@ -62,7 +63,8 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
         tabs.setupWithViewPager(mViewPager);
         tabs.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
-
+        addTasks();
+        Log.d("DONE::",tasksDONE.toString());
     }
 
 
@@ -73,9 +75,7 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
         vp.setAdapter(mSectionsPagerAdapter);
     }
 
-    private void addTasks(final ArrayList<Task> tasksDONE,final ArrayList<Task> tasksTODO){
-        tasksDONE.clear();
-        tasksTODO.clear();
+    private void addTasks(){
         RequestBody usernameRB = RequestBody.create(MediaType.parse("text/plain"), username);
 
         SOService service = ApiUtils.getSOService();
@@ -92,7 +92,7 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
                     Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
                     tasksTODO.add(task);
                 }
-                Log.d("TAREAS-TODO:: ",tasksTODO.toString());
+//                Log.d("TAREAS-TODOS:: ",tasksTODO.toString());
 
             }
             @Override
@@ -112,7 +112,7 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
                     Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
                     tasksDONE.add(task);
                 }
-                Log.d("TAREAS-DONE:: ",tasksDONE.toString());
+//                Log.d("TAREAS-DONE:: ",tasksDONE.toString());
 
             }
             @Override

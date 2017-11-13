@@ -17,10 +17,10 @@ import com.example.usuario.tasker.adapter.TaskAdapter;
 import com.example.usuario.tasker.objects.Task;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 
 public class ShowDoneTasks extends Fragment {
-    private boolean setted = false;
 
 
     @Override
@@ -31,12 +31,18 @@ public class ShowDoneTasks extends Fragment {
         return v;
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
+    }
 
-    private void setup(ArrayList<Task> tasks, View v) {
+    private void setup(HashSet<Task> tasks, View v) {
         ListView lv = v.findViewById(R.id.lv_tasks_done);
-        TaskAdapter adapter = new TaskAdapter(v.getContext(), tasks);
+        ArrayList<Task> tareasDone = new ArrayList<>(tasks);
+        TaskAdapter adapter = new TaskAdapter(v.getContext(), tareasDone);
         lv.setAdapter(adapter);
+        Log.d("ADAPTER-DONE::",tasks.toString());
     }
 
 
