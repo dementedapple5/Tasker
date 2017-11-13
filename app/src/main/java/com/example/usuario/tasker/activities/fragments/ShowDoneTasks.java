@@ -42,6 +42,7 @@ public class ShowDoneTasks extends Fragment {
         ArrayList<Task> tareasDone = new ArrayList<>(tasks);
         TaskAdapter adapter = new TaskAdapter(v.getContext(), tareasDone);
         lv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         Log.d("ADAPTER-DONE::",tasks.toString());
     }
 
