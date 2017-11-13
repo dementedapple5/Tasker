@@ -28,7 +28,6 @@ public class ShowTodoTasks extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_show_todo_tasks, container, false);
         setup(TabbedTasks.tasksTODO,v);
-
         return v;
     }
 
@@ -38,6 +37,7 @@ public class ShowTodoTasks extends Fragment {
         ListView lv = v.findViewById(R.id.lv_tasks_todo);
         ArrayList<Task> tareasTodo = new ArrayList<>(tasks);
         TaskAdapter adapter = new TaskAdapter(v.getContext(), tareasTodo);
+        adapter.notifyDataSetChanged();
         lv.setAdapter(adapter);
     }
 

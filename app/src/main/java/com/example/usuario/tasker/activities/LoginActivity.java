@@ -76,8 +76,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 try {
                     result =response.body().string();
                     Log.d("USEREXISTS Exito::", "" + result);
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException | NullPointerException e) {
+                    Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_LONG).show();
                 }
 
                 if(result.equals("1")){

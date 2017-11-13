@@ -54,17 +54,17 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
         mViewPager = findViewById(R.id.container);
 
-        setupViewPager(mViewPager);
-
         addTaskFAB = findViewById(R.id.btn_add_task);
         addTaskFAB.setOnClickListener(this);
 
         tabs = findViewById(R.id.tabs);
-
         tabs.setupWithViewPager(mViewPager);
+
+
         tabs.setSelectedTabIndicatorColor(Color.parseColor("#FFFFFF"));
         addTasks();
-        Log.d("DONE::",tasksDONE.toString());
+
+
     }
 
 
@@ -80,46 +80,30 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
         SOService service = ApiUtils.getSOService();
         Call<List<TaskPojo>> req = service.select_tasks(usernameRB);
-        Call<List<TaskPojo>> req2 = service.select_tasks_completed(usernameRB);
 
         req.enqueue(new Callback<List<TaskPojo>>() {
             @Override
             public void onResponse(Call<List<TaskPojo>> call, Response<List<TaskPojo>> response) {
                 List<TaskPojo> users = response.body(); // have your all data
 
-
                 for (TaskPojo taskPojo : users) {
                     Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
-                    tasksTODO.add(task);
+                    if (task.isState()==false){
+                        tasksTODO.add(task);
+                    }else{
+                        tasksDONE.add(task);
+                    }
                 }
-//                Log.d("TAREAS-TODOS:: ",tasksTODO.toString());
-
+                setupViewPager(mViewPager);
             }
             @Override
             public void onFailure(Call<List<TaskPojo>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Carga de tareas fallida", Toast.LENGTH_LONG).show();
+
             }
+
         });
 
-
-        req2.enqueue(new Callback<List<TaskPojo>>() {
-            @Override
-            public void onResponse(Call<List<TaskPojo>> call, Response<List<TaskPojo>> response) {
-                List<TaskPojo> users = response.body(); // have your all data
-
-
-                for (TaskPojo taskPojo : users) {
-                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
-                    tasksDONE.add(task);
-                }
-//                Log.d("TAREAS-DONE:: ",tasksDONE.toString());
-
-            }
-            @Override
-            public void onFailure(Call<List<TaskPojo>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Carga de tareas fallida", Toast.LENGTH_LONG).show();
-            }
-        });
     }
 
 
