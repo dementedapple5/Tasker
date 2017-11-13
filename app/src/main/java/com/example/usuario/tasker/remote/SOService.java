@@ -51,7 +51,7 @@ public interface SOService {
 
     @Multipart
     @POST("edit_tasks_all.php")
-    Call<Void> taskEdit(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha,@Part("coments") RequestBody coments,@Part("prioridad") RequestBody prioridad,@Part("contenido") RequestBody contenido,@Part("estado") RequestBody estado);
+    Call<Void> taskEdit(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha,@Part("comentsNew") RequestBody comentsNew,@Part("prioridadNew") RequestBody prioridadNew,@Part("contenidoNew") RequestBody contenidoNew,@Part("tituloNew") RequestBody tituloNew);
 
 
     @Multipart

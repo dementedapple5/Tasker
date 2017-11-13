@@ -139,9 +139,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
                 }
             });
 
-
     }
-
 
     @Override
     public void onClick(View view) {
