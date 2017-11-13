@@ -150,6 +150,9 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         });
 
+        setResult(1);
+        finish();
+
     }
 
     private Boolean validarTask() {

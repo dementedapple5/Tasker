@@ -23,6 +23,7 @@ import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -36,6 +37,7 @@ import retrofit2.Response;
 
 public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
+    private static final int REQUEST_FOR_ACTIVITY_CODE = 1;
     protected Context context;
     protected ArrayList<Task> items;
     private ImageView edit;
@@ -48,6 +50,8 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         this.context = context;
         this.items = items;
     }
+
+
 
 
     @Override
@@ -71,6 +75,8 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
         LayoutInflater inf = (LayoutInflater) viewGroup.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inf.inflate(R.layout.task_item_template, null);
+
+
 
 
         edit = (ImageView) view.findViewById(R.id.item_edit);
@@ -143,6 +149,14 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             }
         });
 
+
+
+    }
+
+    public void refreshEvents(List<Task> events) {
+        events.clear();
+        events.addAll(events);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -159,9 +173,13 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             bundle.putString("TASK_USER",items.get(position).getAttendant());
             intent.putExtras(bundle);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+            ((Activity) context).startActivityForResult(intent,REQUEST_FOR_ACTIVITY_CODE);
         }
+    }
 
+
+    public  void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.d("MyAdapter", "onActivityResult");
     }
 
 
