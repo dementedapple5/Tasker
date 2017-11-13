@@ -118,6 +118,7 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view==addTaskFAB){
+
             Intent intent = new Intent(this,AddTaskActivity.class);
             startActivity(intent);
         }
