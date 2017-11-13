@@ -22,8 +22,10 @@ import com.example.usuario.tasker.remote.SOService;
 import com.example.usuario.tasker.utilities.SectionsPagerAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -35,8 +37,8 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
     private FloatingActionButton addTaskFAB;
     private SectionsPagerAdapter mSectionsPagerAdapter;
-    public static HashSet<Task> tasksTODO = new HashSet<>();
-    public static HashSet<Task> tasksDONE = new HashSet<>();
+    public static TreeSet<Task> tasksTODO = new TreeSet<>();
+    public static TreeSet<Task> tasksDONE = new TreeSet<>();
 
     private TabLayout tabs;
     private ViewPager mViewPager;
@@ -67,6 +69,11 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        addTasks();
+    }
 
     private void setupViewPager(ViewPager vp){
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -94,6 +101,7 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
                         tasksDONE.add(task);
                     }
                 }
+                ArrayList<Task> example = new ArrayList<>(tasksTODO);
                 setupViewPager(mViewPager);
             }
             @Override

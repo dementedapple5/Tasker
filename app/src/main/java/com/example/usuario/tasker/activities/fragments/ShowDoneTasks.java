@@ -18,6 +18,7 @@ import com.example.usuario.tasker.objects.Task;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.TreeSet;
 
 
 public class ShowDoneTasks extends Fragment {
@@ -37,7 +38,7 @@ public class ShowDoneTasks extends Fragment {
 
     }
 
-    private void setup(HashSet<Task> tasks, View v) {
+    private void setup(TreeSet<Task> tasks, View v) {
         ListView lv = v.findViewById(R.id.lv_tasks_done);
         ArrayList<Task> tareasDone = new ArrayList<>(tasks);
         TaskAdapter adapter = new TaskAdapter(v.getContext(), tareasDone);

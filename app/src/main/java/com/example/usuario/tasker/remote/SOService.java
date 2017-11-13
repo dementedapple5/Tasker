@@ -46,13 +46,13 @@ public interface SOService {
     Call<List<UserPojo>> select_users();
 
     @Multipart
-    @POST("edit_tasks.php")
+    @POST("task_done.php")
     Call<Void> taskDone(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha);
 
-    @Multipart
-    @POST("edit_tasks_all.php")
-    Call<Void> taskEdit(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha,@Part("comentsNew") RequestBody comentsNew,@Part("prioridadNew") RequestBody prioridadNew,@Part("contenidoNew") RequestBody contenidoNew,@Part("tituloNew") RequestBody tituloNew);
 
+    @Multipart
+    @POST("task_update.php")
+    Call<Void> taskUpdate(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("coments") RequestBody fecha,@Part("prioridad") RequestBody prioridad,@Part("contenido") RequestBody contenido,@Part("encargadoBefore") RequestBody encargadoBefore,@Part("tituloBefore") RequestBody tituloBefore,@Part("fechaBefore") RequestBody fechaBefore);
 
     @Multipart
     @POST("create_user.php")

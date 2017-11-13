@@ -79,11 +79,12 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         edit.setTag(position);
 
         edit.setOnClickListener(this);
+        final View finalView = view;
         checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
-                    completeTask(position);
+                    completeTask(position, finalView);
                 }
             }
         });
@@ -117,27 +118,30 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
     }
 
-    public void completeTask(int position){
+    public void completeTask(int position, View view){
         dir = items.get(position);
 
         RequestBody attendant = RequestBody.create(MediaType.parse("text/plain"), dir.getAttendant());
         RequestBody title = RequestBody.create(MediaType.parse("text/plain"), dir.getTitle());
         RequestBody date = RequestBody.create(MediaType.parse("text/plain"), dir.getCreationDate());
 
-            SOService service = ApiUtils.getSOService();
-            final Call<Void> req = service.taskDone(attendant,title,date);
-            req.enqueue(new Callback<Void>() {
-                @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    Toast.makeText(context, "Tarea completada", Toast.LENGTH_LONG).show();
-                    Log.d("TITLE::",dir.getTitle());
-                }
+        Toast.makeText(view.getContext(),dir.getAttendant(),Toast.LENGTH_LONG).show();
 
-                @Override
-                public void onFailure(Call<Void> call, Throwable t) {
-                    Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_LONG).show();
-                }
-            });
+
+        SOService service = ApiUtils.getSOService();
+        final Call<Void> req = service.taskDone(attendant,title,date);
+        req.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                Toast.makeText(context, "Tarea completada", Toast.LENGTH_LONG).show();
+                Log.d("TITLE::",dir.getTitle());
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_LONG).show();
+            }
+        });
 
     }
 
@@ -154,6 +158,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             bundle.putInt("TASK_PRIOR",items.get(position).getPriority());
             bundle.putString("TASK_USER",items.get(position).getAttendant());
             intent.putExtras(bundle);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
 
