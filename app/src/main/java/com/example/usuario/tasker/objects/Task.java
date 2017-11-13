@@ -11,7 +11,7 @@ import java.util.Date;
  * Created by Usuario on 26/10/2017.
  */
 
-public class Task{
+public class Task implements Comparable<Task>{
     private String title;
     private String attendant;
     private String comment;
@@ -118,4 +118,9 @@ public class Task{
     }
 
 
+    @Override
+    public int compareTo(@NonNull Task task) {
+        int comparePrior = this.getPriority()-(task.getPriority());
+        return comparePrior==0 ? this.getTitle().compareTo(task.getTitle()): comparePrior;
+    }
 }
