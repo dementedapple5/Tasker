@@ -127,6 +127,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
         SOService service = ApiUtils.getSOService();
         RequestBody usernameRB = RequestBody.create(MediaType.parse("text/plain"), userName);
+        RequestBody newusernameRB = RequestBody.create(MediaType.parse("text/plain"), userSpinner.getSelectedItem().toString().trim());
         RequestBody titleRB = RequestBody.create(MediaType.parse("text/plain"), etTaskTitle.getText().toString());
         RequestBody oldTitleRB = RequestBody.create(MediaType.parse("text/plain"), bundleR.getString("TASK_TITLE"));
         RequestBody dateRB = RequestBody.create(MediaType.parse("text/plain"), date);
@@ -134,7 +135,7 @@ public class EditTaskActivity extends AppCompatActivity {
         RequestBody prioritRB = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(priority));
         RequestBody descriptionRB = RequestBody.create(MediaType.parse("text/plain"), etTaskDesc.getText().toString());
         RequestBody stateRB = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(0));
-        Call<Void> req = service.taskEdit(usernameRB,oldTitleRB,dateRB,commentsRB,prioritRB,descriptionRB,titleRB);
+        Call<Void> req = service.taskUpdate(newusernameRB,titleRB,commentsRB,prioritRB,descriptionRB,usernameRB,oldTitleRB,dateRB);
 
         req.enqueue(new Callback<Void>() {
             @Override
