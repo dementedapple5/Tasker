@@ -49,19 +49,28 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private void setup() {
         Bundle bundleR = getIntent().getExtras();
+
+        String title = bundleR.getString("TASK_TITLE");
+        String comment = bundleR.getString("TASK_COMMENT");
+        date = bundleR.getString("TASK_DATE");
+        String user =  bundleR.getString("TASK_USER");
+        String description = bundleR.getString("TASK_DESC");
+
+
+        Task task = new Task(title, user, comment, description, priority);
         etTaskTitle = findViewById(R.id.et_task_name);
         etTaskComment = findViewById(R.id.et_task_comment);
         etTaskDesc = findViewById(R.id.et_task_desc);
-        radioGroup = (RadioGroup) findViewById(R.id.et_radioButton);
-        lastButton = (RadioButton) findViewById(R.id.et_rb_minor_prior);
-        btnAddTask = (Button) findViewById(R.id.et_btn_add_task);
-        userSpinner = (Spinner) findViewById(R.id.et_users_spinner);
+        radioGroup = findViewById(R.id.rg_prior);
+        lastButton = findViewById(R.id.et_rb_minor_prior);
+        btnAddTask = findViewById(R.id.et_btn_add_task);
+        userSpinner = findViewById(R.id.et_users_spinner);
 
-        etTaskTitle.setText(bundleR.getString("TASK_TITLE"));
-        etTaskComment.setText(bundleR.getString("TASK_COMMENT"));
-        etTaskDesc.setText(bundleR.getString("TASK_DESC"));
-        date = bundleR.getString("TASK_DATE");
-        userName = bundleR.getString("TASK_USER");
+        etTaskTitle.setText(title);
+        etTaskComment.setText(comment);
+        etTaskDesc.setText(description);
+        userName = user;
+
 
 
         btnAddTask.setOnClickListener(new View.OnClickListener() {
@@ -103,12 +112,17 @@ public class EditTaskActivity extends AppCompatActivity {
                 List<UserPojo> users = response.body(); // have your all data
                 List<String> usersLists = new ArrayList<>();
 
+
                 for (UserPojo userPojo : users) {
                     String userName = userPojo.getUsername();
                     usersLists.add(userName);
                 }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, usersLists);
 
-                userSpinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, usersLists));
+                int defaultPosition = adapter.getPosition(userName);
+
+                userSpinner.setAdapter(adapter);
+                userSpinner.setSelection(defaultPosition);
 
 
             }

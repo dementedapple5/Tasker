@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -75,6 +76,9 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
         addTasks();
     }
 
+
+
+
     private void setupViewPager(ViewPager vp){
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFragment(new ShowTodoTasks(),"todo");
@@ -92,6 +96,8 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onResponse(Call<List<TaskPojo>> call, Response<List<TaskPojo>> response) {
                 List<TaskPojo> users = response.body(); // have your all data
+                tasksDONE.clear();
+                tasksTODO.clear();
 
                 for (TaskPojo taskPojo : users) {
                     Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
@@ -103,6 +109,8 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
                 }
                 ArrayList<Task> example = new ArrayList<>(tasksTODO);
                 setupViewPager(mViewPager);
+                Log.d("TASK-TODO:",String.valueOf(tasksTODO.size()));
+                Log.d("TASK-DONE:",String.valueOf(tasksDONE.size()));
             }
             @Override
             public void onFailure(Call<List<TaskPojo>> call, Throwable t) {

@@ -44,7 +44,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
     private CheckBox checked;
     public final static int REQUEST_CODE = 1;
     Task dir;
-
+    private TextView title, comment, description, date;
 
     public TaskAdapter(Context context, ArrayList<Task> items) {
         this.context = context;
@@ -111,13 +111,16 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         }
 
 
-        TextView title = view.findViewById(R.id.item_title);
+        title = view.findViewById(R.id.item_title);
         title.setText(dir.getTitle());
 
-        TextView description = view.findViewById(R.id.item_description);
+        comment = view.findViewById(R.id.tv_comment);
+        comment.setText(dir.getComment());
+
+        description = view.findViewById(R.id.item_description);
         description.setText(dir.getDescription());
 
-        TextView date = view.findViewById(R.id.item_date);
+        date = view.findViewById(R.id.item_date);
         date.setText(dir.getCreationDate());
 
         return view;
@@ -175,11 +178,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             ((Activity) context).startActivityForResult(intent,REQUEST_FOR_ACTIVITY_CODE);
         }
-    }
-
-
-    public  void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Log.d("MyAdapter", "onActivityResult");
     }
 
 
