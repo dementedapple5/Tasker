@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class EditTaskActivity extends AppCompatActivity {
     private EditText etTaskTitle, etTaskComment, etTaskDesc;
-    private String date,userName;
+    private String date, userName;
     RadioGroup radioGroup;
     RadioButton lastButton;
     Button btnAddTask;
@@ -53,7 +53,7 @@ public class EditTaskActivity extends AppCompatActivity {
         String title = bundleR.getString("TASK_TITLE");
         String comment = bundleR.getString("TASK_COMMENT");
         date = bundleR.getString("TASK_DATE");
-        String user =  bundleR.getString("TASK_USER");
+        String user = bundleR.getString("TASK_USER");
         String description = bundleR.getString("TASK_DESC");
 
 
@@ -72,13 +72,12 @@ public class EditTaskActivity extends AppCompatActivity {
         userName = user;
 
 
-
         btnAddTask.setOnClickListener(new View.OnClickListener() {
-                                          @Override
-                                          public void onClick(View view) {
-                                              updateTask();
-                                          }
-                                      });
+            @Override
+            public void onClick(View view) {
+                updateTask();
+            }
+        });
 
         //Cambia la variable prioridad en funcion del boton que el usuario presione
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -149,15 +148,16 @@ public class EditTaskActivity extends AppCompatActivity {
         RequestBody prioritRB = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(priority));
         RequestBody descriptionRB = RequestBody.create(MediaType.parse("text/plain"), etTaskDesc.getText().toString());
         RequestBody stateRB = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(0));
-        Call<Void> req = service.taskUpdate(newusernameRB,titleRB,commentsRB,prioritRB,descriptionRB,usernameRB,oldTitleRB,dateRB);
+        Call<Void> req = service.taskUpdate(newusernameRB, titleRB, commentsRB, prioritRB, descriptionRB, usernameRB, oldTitleRB, dateRB);
 
         req.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-               Toast.makeText(getApplicationContext(),"Task edited",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Task edited", Toast.LENGTH_LONG).show();
 
 
             }
+
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Edicion de  tarea fallida", Toast.LENGTH_LONG).show();
