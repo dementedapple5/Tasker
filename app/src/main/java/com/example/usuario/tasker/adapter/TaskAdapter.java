@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.activities.EditTaskActivity;
+import com.example.usuario.tasker.activities.TabbedTasks;
 import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
@@ -91,6 +92,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
                     completeTask(position, finalView);
+
                 }
             }
         });
@@ -134,8 +136,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         RequestBody title = RequestBody.create(MediaType.parse("text/plain"), dir.getTitle());
         RequestBody date = RequestBody.create(MediaType.parse("text/plain"), dir.getCreationDate());
 
-        Toast.makeText(view.getContext(),dir.getAttendant(),Toast.LENGTH_LONG).show();
-
 
         SOService service = ApiUtils.getSOService();
         final Call<Void> req = service.taskDone(attendant,title,date);
@@ -151,8 +151,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
                 Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_LONG).show();
             }
         });
-
-
 
     }
 

@@ -13,6 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.LoginActivity"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,13 +22,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.AddTaskActivity"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.SignUpActivity"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".activities.EditTaskActivity"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.TabbedTasks"
+            android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_tabbed_tasks"
             android:theme="@style/AppTheme"
             android:screenOrientation="portrait"></activity>

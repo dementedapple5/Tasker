@@ -1,11 +1,15 @@
 package com.example.usuario.tasker.activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,6 +35,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText etUsername, etPassword;
     private Button btnLogin, btnSignUp;
     private ConnectionSQLiteHelper conn;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    private CheckBox checkRemember;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +50,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         etPassword = (EditText) findViewById(R.id.et_password);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnSignUp = (Button) findViewById(R.id.btn_signup);
+        checkRemember = (CheckBox) findViewById(R.id.check_remember);
 
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String name = preferences.getString("NAME", "");
+        String password = preferences.getString("PASSWORD", "");
+        if(!name.equalsIgnoreCase("")&& !password.equalsIgnoreCase(""))
+        {
+            etUsername.setText(name);
+            etPassword.setText(password);
+        }
+
+
+        checkRemember.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
     }
@@ -56,7 +75,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         else if (v==btnSignUp){
             Intent intent = new Intent(LoginActivity.this,SignUpActivity.class);
             startActivity(intent);
+        }else if (v==checkRemember){
+            this.saveInfo();
         }
+    }
+
+    private void saveInfo() {
+        String username = etUsername.getText().toString();
+        String password = etPassword.getText().toString();
+
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("NAME",username);
+        editor.putString("PASSWORD",password);
+        editor.apply();
     }
 
 
