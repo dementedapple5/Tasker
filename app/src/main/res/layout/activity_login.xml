@@ -8,22 +8,27 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="@dimen/defaultPadding"
+        android:background="#eee">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/login_border"
+            android:elevation="4dp"
+            android:layout_gravity="center_vertical">
 
             <TextView
                 android:id="@+id/tv_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                android:gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center_horizontal"
                 android:text="@string/login_text"
                 android:textColor="@color/white"
-                android:textSize="@dimen/titles" />
+                android:textSize="36sp" />
 
             <EditText
                 android:id="@+id/et_username"
@@ -50,19 +55,30 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/remember_user" />
 
+
             <Button
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/login_text" />
+                android:text="@string/login_text"
+                android:layout_weight="1"
+                android:background="@drawable/login_border"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:textColor="@color/white"/>
 
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="144dp"
-                android:text="SIGNUP"/>
+                android:layout_weight="1"
+                android:text="@string/signup"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:background="@drawable/login_border"
+                android:backgroundTint="@color/colorPrimary"
+                android:textColor="@color/white"/>
+
         </LinearLayout>
     </ScrollView>
 
