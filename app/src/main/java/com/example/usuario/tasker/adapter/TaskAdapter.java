@@ -3,14 +3,13 @@ package com.example.usuario.tasker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,13 +17,11 @@ import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.activities.EditTaskActivity;
-import com.example.usuario.tasker.activities.TabbedTasks;
 import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -38,12 +35,11 @@ import retrofit2.Response;
 
 public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
+
     private static final int REQUEST_FOR_ACTIVITY_CODE = 1;
     protected Context context;
     protected ArrayList<Task> items;
-    private ImageView edit;
-    private CheckBox checked;
-    public final static int REQUEST_CODE = 1;
+    private ImageView edit, checked;
     Task dir;
     private TextView title, comment, description, date;
 
@@ -79,23 +75,20 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
 
 
-
-        edit = (ImageView) view.findViewById(R.id.item_edit);
-        checked = (CheckBox) view.findViewById(R.id.item_done);
+        edit = view.findViewById(R.id.item_edit);
+        checked = view.findViewById(R.id.item_done);
 
         edit.setTag(position);
 
         edit.setOnClickListener(this);
         final View finalView = view;
-        checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked){
-                    completeTask(position, finalView);
 
-                }
-            }
+        checked.setOnClickListener(new View.OnClickListener() {
+               public void onClick(View v) {
+                   completeTask(position, finalView);
+               }
         });
+
 
         dir = items.get(position);
 
@@ -129,7 +122,7 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
     }
 
-    public void completeTask(int position, View view){
+    public void completeTask(int position, final View view){
         dir = items.get(position);
 
         RequestBody attendant = RequestBody.create(MediaType.parse("text/plain"), dir.getAttendant());
@@ -142,23 +135,20 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         req.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(context, "Tarea completada", Toast.LENGTH_LONG).show();
-                Log.d("TITLE::",dir.getTitle());
+                Toast.makeText(context, "Tarea completada", Toast.LENGTH_SHORT).show();
+
+                notifyDataSetChanged();
+
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
-    public void refreshEvents(List<Task> events) {
-        events.clear();
-        events.addAll(events);
-        notifyDataSetChanged();
-    }
 
     @Override
     public void onClick(View view) {

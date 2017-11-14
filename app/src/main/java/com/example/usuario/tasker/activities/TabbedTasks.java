@@ -77,8 +77,6 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
     }
 
 
-
-
     private void setupViewPager(ViewPager vp){
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFragment(new ShowTodoTasks(),"todo");
