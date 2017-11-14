@@ -92,7 +92,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked){
                     completeTask(position, finalView);
-
                 }
             }
         });
