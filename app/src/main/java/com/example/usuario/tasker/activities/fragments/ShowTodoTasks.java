@@ -29,10 +29,9 @@ public class ShowTodoTasks extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_show_todo_tasks, container, false);
-        setup(TabbedTasks.tasksTODO,v);
+        setup(TabbedTasks.tasksTODO, v);
         return v;
     }
-
 
 
     private void setup(TreeSet<Task> tasks, View v) {

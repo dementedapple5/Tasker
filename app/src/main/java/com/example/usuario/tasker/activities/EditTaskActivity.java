@@ -32,17 +32,15 @@ public class EditTaskActivity extends AppCompatActivity {
     private EditText etTaskTitle, etTaskComment, etTaskDesc;
     private String date, userName;
     RadioGroup radioGroup;
-    RadioButton minorButton, mediumButton, majorButton;
+    RadioButton minorButton;
     Button btnAddTask;
     Spinner userSpinner;
     int priority;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_task);
-
         setup();
     }
 
@@ -54,8 +52,7 @@ public class EditTaskActivity extends AppCompatActivity {
         date = bundleR.getString("TASK_DATE");
         String user = bundleR.getString("TASK_USER");
         String description = bundleR.getString("TASK_DESC");
-        priority =bundleR.getInt("TASK_PRIOR");
-
+        priority = bundleR.getInt("TASK_PRIOR");
 
         Task task = new Task(title, user, comment, description, priority);
         etTaskTitle = findViewById(R.id.et_task_name);
@@ -72,16 +69,15 @@ public class EditTaskActivity extends AppCompatActivity {
         etTaskDesc.setText(description);
         userName = user;
 
-        if(priority == 1){
+        if (priority == 1) {
             radioGroup.check(R.id.et_rb_major_prior);
 
-        }else if (priority == 2){
+        } else if (priority == 2) {
             radioGroup.check(R.id.et_rb_medium_prior);
 
-        }else{
+        } else {
             radioGroup.check(R.id.et_rb_minor_prior);
         }
-
 
         btnAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +85,6 @@ public class EditTaskActivity extends AppCompatActivity {
                 updateTask();
             }
         });
-
         //Cambia la variable prioridad en funcion del boton que el usuario presione
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -106,7 +101,6 @@ public class EditTaskActivity extends AppCompatActivity {
                     case R.id.et_rb_minor_prior:
                         priority = 3;
                         break;
-
                 }
             }
         });
@@ -115,26 +109,19 @@ public class EditTaskActivity extends AppCompatActivity {
 
         SOService service = ApiUtils.getSOService();
         Call<List<UserPojo>> req = service.select_users();
-
         req.enqueue(new Callback<List<UserPojo>>() {
             @Override
             public void onResponse(Call<List<UserPojo>> call, Response<List<UserPojo>> response) {
                 List<UserPojo> users = response.body(); // have your all data
                 List<String> usersLists = new ArrayList<>();
-
-
                 for (UserPojo userPojo : users) {
                     String userName = userPojo.getUsername();
                     usersLists.add(userName);
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, usersLists);
-
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, usersLists);
                 int defaultPosition = adapter.getPosition(userName);
-
                 userSpinner.setAdapter(adapter);
                 userSpinner.setSelection(defaultPosition);
-
-
             }
 
             @Override
@@ -148,7 +135,6 @@ public class EditTaskActivity extends AppCompatActivity {
     private void updateTask() {
 
         Bundle bundleR = getIntent().getExtras();
-
         SOService service = ApiUtils.getSOService();
         RequestBody usernameRB = RequestBody.create(MediaType.parse("text/plain"), userName);
         RequestBody newusernameRB = RequestBody.create(MediaType.parse("text/plain"), userSpinner.getSelectedItem().toString().trim());
@@ -165,8 +151,6 @@ public class EditTaskActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(getApplicationContext(), "Task edited", Toast.LENGTH_LONG).show();
-
-
             }
 
             @Override
@@ -177,17 +161,13 @@ public class EditTaskActivity extends AppCompatActivity {
 
         setResult(1);
         finish();
-
     }
 
     private Boolean validarTask() {
         Boolean isGood = true;
-
         String titleStr = etTaskTitle.getText().toString();
         String comentStr = etTaskComment.getText().toString();
         String descriptionStr = etTaskDesc.getText().toString();
-
-
         if (titleStr.isEmpty()) {
             etTaskTitle.setError("Introduce un título");
             isGood = false;

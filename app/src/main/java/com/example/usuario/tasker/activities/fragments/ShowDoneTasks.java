@@ -29,7 +29,7 @@ public class ShowDoneTasks extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_show_done_tasks, container, false);
-        setup(TabbedTasks.tasksDONE,v);
+        setup(TabbedTasks.tasksDONE, v);
         return v;
     }
 
@@ -45,10 +45,8 @@ public class ShowDoneTasks extends Fragment {
         TaskAdapter adapter = new TaskAdapter(v.getContext(), tareasDone);
         lv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        Log.d("ADAPTER-DONE::",tasks.toString());
+        Log.d("ADAPTER-DONE::", tasks.toString());
     }
-
-
 
 
 }

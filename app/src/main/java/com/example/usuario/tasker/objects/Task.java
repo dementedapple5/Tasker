@@ -2,16 +2,14 @@ package com.example.usuario.tasker.objects;
 
 import android.support.annotation.NonNull;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by Usuario on 26/10/2017.
  */
 
-public class Task implements Comparable<Task>{
+public class Task implements Comparable<Task> {
     private String title;
     private String attendant;
     private String comment;
@@ -40,7 +38,7 @@ public class Task implements Comparable<Task>{
         this.state = state;
     }
 
-    private static String setCreationDate(){
+    private static String setCreationDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         return sdf.format(date);
@@ -120,7 +118,7 @@ public class Task implements Comparable<Task>{
 
     @Override
     public int compareTo(@NonNull Task task) {
-        int comparePrior = this.getPriority()-(task.getPriority());
-        return comparePrior==0 ? this.getTitle().compareTo(task.getTitle()): comparePrior;
+        int comparePrior = this.getPriority() - (task.getPriority());
+        return comparePrior == 0 ? this.getTitle().compareTo(task.getTitle()) : comparePrior;
     }
 }
