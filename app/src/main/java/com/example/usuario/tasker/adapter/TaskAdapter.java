@@ -3,9 +3,7 @@ package com.example.usuario.tasker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +15,15 @@ import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.activities.EditTaskActivity;
+import com.example.usuario.tasker.activities.fragments.ShowDoneTasks;
+import com.example.usuario.tasker.activities.fragments.ShowTodoTasks;
 import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -84,9 +86,12 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         final View finalView = view;
 
         checked.setOnClickListener(new View.OnClickListener() {
-               public void onClick(View v) {
-                   completeTask(position, finalView);
-               }
+            public void onClick(View v) {
+                completeTask(position, finalView);
+                ShowTodoTasks.addTasks(ShowTodoTasks.v);
+                ShowDoneTasks.addTasks(ShowDoneTasks.v);
+
+            }
         });
 
 
@@ -147,11 +152,47 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             }
         });
 
+
+        ShowDoneTasks.adapter.clear();
+        ShowTodoTasks.adapter.clear();
+        ShowTodoTasks.addTasks(ShowTodoTasks.v);
+        ShowDoneTasks.addTasks(ShowDoneTasks.v);
     }
+
+    public void addItem(Task task){
+
+        if(!items.contains(task)){
+            items.add(task);
+            this.notifyDataSetChanged();
+        }
+
+        Collections.sort(items);
+
+    }
+
+    public void removeItem(Task task) {
+        items.remove(task);
+        this.notifyDataSetChanged();
+        Collections.sort(items);
+    }
+
+    public void update(ArrayList<Task> tasks){
+        items.clear();
+        items.addAll(tasks);
+        this.notifyDataSetChanged();
+        Collections.sort(items);
+    }
+
+    public void clear(){
+        items.clear();
+    }
+
+
 
 
     @Override
     public void onClick(View view) {
+
         if (view.getId()==edit.getId()){
             Intent intent = new Intent(view.getContext(), EditTaskActivity.class);
             Bundle bundle = new Bundle();
@@ -165,6 +206,11 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             intent.putExtras(bundle);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             ((Activity) context).startActivityForResult(intent,REQUEST_FOR_ACTIVITY_CODE);
+
+            ShowDoneTasks.adapter.clear();
+            ShowTodoTasks.adapter.clear();
+            ShowTodoTasks.addTasks(ShowTodoTasks.v);
+            ShowDoneTasks.addTasks(ShowDoneTasks.v);
         }
     }
 

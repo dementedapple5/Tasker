@@ -14,6 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
+import com.example.usuario.tasker.activities.fragments.ShowDoneTasks;
+import com.example.usuario.tasker.activities.fragments.ShowTodoTasks;
 import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.pojoObjects.UserPojo;
 import com.example.usuario.tasker.remote.ApiUtils;
@@ -159,6 +161,10 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         });
 
+        ShowDoneTasks.adapter.clear();
+        ShowTodoTasks.adapter.clear();
+        ShowTodoTasks.addTasks(ShowTodoTasks.v);
+        ShowDoneTasks.addTasks(ShowDoneTasks.v);
         setResult(1);
         finish();
     }
