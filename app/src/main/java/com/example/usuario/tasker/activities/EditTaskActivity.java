@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.objects.Task;
-import com.example.usuario.tasker.pojoObjects.TaskPojo;
 import com.example.usuario.tasker.pojoObjects.UserPojo;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
@@ -33,7 +32,7 @@ public class EditTaskActivity extends AppCompatActivity {
     private EditText etTaskTitle, etTaskComment, etTaskDesc;
     private String date, userName;
     RadioGroup radioGroup;
-    RadioButton lastButton;
+    RadioButton minorButton, mediumButton, majorButton;
     Button btnAddTask;
     Spinner userSpinner;
     int priority;
@@ -55,6 +54,7 @@ public class EditTaskActivity extends AppCompatActivity {
         date = bundleR.getString("TASK_DATE");
         String user = bundleR.getString("TASK_USER");
         String description = bundleR.getString("TASK_DESC");
+        priority =bundleR.getInt("TASK_PRIOR");
 
 
         Task task = new Task(title, user, comment, description, priority);
@@ -62,7 +62,8 @@ public class EditTaskActivity extends AppCompatActivity {
         etTaskComment = findViewById(R.id.et_task_comment);
         etTaskDesc = findViewById(R.id.et_task_desc);
         radioGroup = findViewById(R.id.rg_prior);
-        lastButton = findViewById(R.id.et_rb_minor_prior);
+        minorButton = findViewById(R.id.et_rb_minor_prior);
+
         btnAddTask = findViewById(R.id.et_btn_add_task);
         userSpinner = findViewById(R.id.et_users_spinner);
 
@@ -70,6 +71,16 @@ public class EditTaskActivity extends AppCompatActivity {
         etTaskComment.setText(comment);
         etTaskDesc.setText(description);
         userName = user;
+
+        if(priority == 1){
+            radioGroup.check(R.id.et_rb_major_prior);
+
+        }else if (priority == 2){
+            radioGroup.check(R.id.et_rb_medium_prior);
+
+        }else{
+            radioGroup.check(R.id.et_rb_minor_prior);
+        }
 
 
         btnAddTask.setOnClickListener(new View.OnClickListener() {
@@ -193,7 +204,7 @@ public class EditTaskActivity extends AppCompatActivity {
         }
 
         if (radioGroup.getCheckedRadioButtonId() == -1) {
-            lastButton.setError("Elije una prioridad");
+            minorButton.setError("Elije una prioridad");
             isGood = false;
         }
 

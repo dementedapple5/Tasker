@@ -1,9 +1,12 @@
 package com.example.usuario.tasker.activities;
 
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.LocalBroadcastManager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import android.support.v4.view.ViewPager;
@@ -84,7 +87,8 @@ public class TabbedTasks extends AppCompatActivity implements View.OnClickListen
         vp.setAdapter(mSectionsPagerAdapter);
     }
 
-    private void addTasks(){
+
+    public void addTasks(){
         RequestBody usernameRB = RequestBody.create(MediaType.parse("text/plain"), username);
 
         SOService service = ApiUtils.getSOService();
