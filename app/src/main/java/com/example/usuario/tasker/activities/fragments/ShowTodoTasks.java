@@ -72,9 +72,8 @@ public class ShowTodoTasks extends Fragment {
             public void onResponse(Call<List<TaskPojo>> call, Response<List<TaskPojo>> response) {
                 List<TaskPojo> users = response.body(); // have your all data
 
-
                 for (TaskPojo taskPojo : users) {
-                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
+                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado(),taskPojo.getVisible());
                     if (!task.isState()){
                         adapter.addItem(task);
                     }

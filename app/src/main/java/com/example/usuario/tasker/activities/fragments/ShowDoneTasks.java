@@ -70,8 +70,8 @@ public class ShowDoneTasks extends Fragment {
 
 
                 for (TaskPojo taskPojo : users) {
-                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado());
-                    if (task.isState()==true){
+                    Task task = new Task(taskPojo.getTitulo(),taskPojo.getEncargado(),taskPojo.getComents(),taskPojo.getContenido(),Integer.parseInt(taskPojo.getPrioridad()),taskPojo.getFecha(),taskPojo.getEstado(), taskPojo.getVisible());
+                    if (task.isState()==true && task.isVisible()){
                         adapter.addItem(task);
                     }
                 }

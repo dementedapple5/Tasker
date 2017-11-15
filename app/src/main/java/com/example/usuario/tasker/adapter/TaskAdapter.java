@@ -3,6 +3,7 @@ package com.example.usuario.tasker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,18 +85,16 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
         edit.setOnClickListener(this);
         final View finalView = view;
+        dir = items.get(position);
 
         checked.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 completeTask(position, finalView);
-                ShowTodoTasks.addTasks(ShowTodoTasks.v);
-                ShowDoneTasks.addTasks(ShowDoneTasks.v);
-
             }
         });
 
 
-        dir = items.get(position);
+
 
 
         int priority = dir.getPriority();
@@ -108,6 +107,11 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
         if (priority == 3){
             view.setBackgroundResource(R.drawable.minor_prior_task_border);
+        }
+
+        if (dir.isState()){
+            checked.setImageResource(R.drawable.ic_delete_black_24dp);
+            checked.setBackgroundColor(Color.parseColor("#B71C1C"));
         }
 
 
@@ -140,10 +144,13 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         req.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(context, "Tarea completada", Toast.LENGTH_SHORT).show();
+
+                ShowDoneTasks.adapter.clear();
+                ShowTodoTasks.adapter.clear();
+                ShowTodoTasks.addTasks(ShowTodoTasks.v);
+                ShowDoneTasks.addTasks(ShowDoneTasks.v);
 
                 notifyDataSetChanged();
-
             }
 
             @Override
@@ -207,10 +214,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             ((Activity) context).startActivityForResult(intent,REQUEST_FOR_ACTIVITY_CODE);
 
-            ShowDoneTasks.adapter.clear();
-            ShowTodoTasks.adapter.clear();
-            ShowTodoTasks.addTasks(ShowTodoTasks.v);
-            ShowDoneTasks.addTasks(ShowDoneTasks.v);
         }
     }
 

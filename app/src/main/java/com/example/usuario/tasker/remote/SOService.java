@@ -39,7 +39,7 @@ public interface SOService {
 
     @Multipart
     @POST("insert_tasks.php")
-    Call<Void> createTask(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("coments") RequestBody comment, @Part("contenido") RequestBody desc,@Part("prioridad") Integer prior,@Part("fecha") RequestBody date,@Part("estado") boolean state);
+    Call<Void> createTask(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("coments") RequestBody comment, @Part("contenido") RequestBody desc,@Part("prioridad") Integer prior,@Part("fecha") RequestBody date,@Part("estado") boolean state,@Part("visible") boolean visible);
 
 
     @POST("select_users.php")
