@@ -16,12 +16,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
+import com.example.usuario.tasker.activities.fragments.ShowDoneTasks;
+import com.example.usuario.tasker.activities.fragments.ShowTodoTasks;
 import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.pojoObjects.UserPojo;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
-import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,25 +39,25 @@ public class AddTaskActivity extends AppCompatActivity {
     RadioButton lastButton;
     Button btnAddTask;
     Spinner userSpinner;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
-
         setup();
-
     }
 
 
     private void setup() {
+        username = getIntent().getStringExtra("TASK_USER");
         etTitle = findViewById(R.id.et_task_name);
-        etComment =findViewById(R.id.et_task_comment);
+        etComment = findViewById(R.id.et_task_comment);
         etDesc = findViewById(R.id.et_task_desc);
         radioGroup = findViewById(R.id.et_radioButton);
-        lastButton =  findViewById(R.id.rb_minor_prior);
-        btnAddTask =  findViewById(R.id.btn_add_task);
-        userSpinner =  findViewById(R.id.users_spinner);
+        lastButton = findViewById(R.id.rb_minor_prior);
+        btnAddTask = findViewById(R.id.btn_add_task);
+        userSpinner = findViewById(R.id.users_spinner);
 
         //Cambia la variable prioridad en funcion del boton que el usuario presione
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -67,11 +67,9 @@ public class AddTaskActivity extends AppCompatActivity {
                     case R.id.rb_major_prior:
                         priority = 1;
                         break;
-
                     case R.id.rb_medium_prior:
                         priority = 2;
                         break;
-
                     case R.id.rb_minor_prior:
                         priority = 3;
                         break;
@@ -83,21 +81,19 @@ public class AddTaskActivity extends AppCompatActivity {
 
         SOService service = ApiUtils.getSOService();
         Call<List<UserPojo>> req = service.select_users();
-
         req.enqueue(new Callback<List<UserPojo>>() {
             @Override
             public void onResponse(Call<List<UserPojo>> call, Response<List<UserPojo>> response) {
                 List<UserPojo> users = response.body(); // have your all data
                 List<String> usersLists = new ArrayList<>();
-
                 for (UserPojo userPojo : users) {
                     String userName = userPojo.getUsername();
                     usersLists.add(userName);
                 }
-
-                userSpinner.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, usersLists));
-
-
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, usersLists);
+                int defaultPosition = adapter.getPosition(username);
+                userSpinner.setAdapter(adapter);
+                userSpinner.setSelection(defaultPosition);
             }
 
             @Override
@@ -112,10 +108,7 @@ public class AddTaskActivity extends AppCompatActivity {
                 addTask();
             }
         });
-
-
     }
-
 
     private void addTask() {
 
@@ -124,9 +117,7 @@ public class AddTaskActivity extends AppCompatActivity {
         String descriptionStr = etDesc.getText().toString().trim();
         String usernameStr = userSpinner.getSelectedItem().toString().trim();
 
-
-
-        Task task = new Task(titleStr,usernameStr,comentStr,descriptionStr,priority);
+        Task task = new Task(titleStr, usernameStr, comentStr, descriptionStr, priority);
 
         RequestBody username = RequestBody.create(MediaType.parse("text/plain"), task.getAttendant());
         RequestBody title = RequestBody.create(MediaType.parse("text/plain"), task.getTitle());
@@ -136,11 +127,9 @@ public class AddTaskActivity extends AppCompatActivity {
 
         if (!validarTask()) {
             Toast.makeText(getApplicationContext(), "No se ha validado el formulario", Toast.LENGTH_LONG).show();
-
-
         } else {
             SOService service = ApiUtils.getSOService();
-            Call<Void> req = service.createTask(username,title,comment,desc,task.getPriority(),date,task.isState());
+            Call<Void> req = service.createTask(username, title, comment, desc, task.getPriority(), date, task.isState());
             req.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
@@ -150,23 +139,21 @@ public class AddTaskActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<Void> call, Throwable t) {
                     Toast.makeText(getApplicationContext(), "Fallo al insertar tarea", Toast.LENGTH_LONG).show();
-
                 }
             });
-
-
         }
 
+        ShowDoneTasks.adapter.clear();
+        ShowTodoTasks.adapter.clear();
+        ShowTodoTasks.addTasks(ShowTodoTasks.v);
+        ShowDoneTasks.addTasks(ShowDoneTasks.v);
     }
 
     private Boolean validarTask() {
         Boolean isGood = true;
-
         String titleStr = etTitle.getText().toString();
         String comentStr = etComment.getText().toString();
         String descriptionStr = etDesc.getText().toString();
-
-
         if (titleStr.isEmpty()) {
             etTitle.setError("Introduce un título");
             isGood = false;
@@ -187,7 +174,6 @@ public class AddTaskActivity extends AppCompatActivity {
             isGood = false;
         }
 
-
         int selectedItemOfMySpinner = userSpinner.getSelectedItemPosition();
         String actualPositionOfMySpinner = (String) userSpinner.getItemAtPosition(selectedItemOfMySpinner);
 
@@ -198,7 +184,6 @@ public class AddTaskActivity extends AppCompatActivity {
             errorText.setText("Escoge quien tiene que realizar la tarea!!");//changes the selected item text to this
             isGood = false;
         }
-
         return isGood;
     }
 }
