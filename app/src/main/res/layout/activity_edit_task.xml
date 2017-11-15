@@ -15,7 +15,7 @@
         android:gravity="center"
         android:text="@string/edit_task_title"
         android:textColor="@color/white"
-        android:textSize="@dimen/titles"
+        android:textSize="@dimen/page_titles"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

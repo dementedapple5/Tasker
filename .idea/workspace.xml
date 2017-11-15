@@ -17,7 +17,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f98e9a4e-5cd7-4a48-97e3-2eb4bdc074c2" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/classAnalysis.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/javaCompile.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/javaCompile/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/adapter/TaskAdapter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/adapter/TaskAdapter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_task.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_add_task.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_task.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_task.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" afterPath="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -61,26 +73,62 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TaskAdapter.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TaskAdapter.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/adapter/TaskAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="147" column="78" lean-forward="false" selection-start-line="147" selection-start-column="78" selection-end-line="147" selection-end-column="78" />
+            <state relative-caret-position="170">
+              <caret line="91" column="50" lean-forward="false" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
               <folding>
-                <element signature="e#2340#2599#0" expanded="true" />
-                <element signature="e#2598#2599#0" expanded="true" />
-                <element signature="e#5468#5469#0" expanded="true" />
-                <element signature="e#5497#5498#0" expanded="true" />
+                <element signature="e#2340#2485#0" expanded="true" />
+                <element signature="e#2484#2485#0" expanded="true" />
+                <element signature="e#5354#5355#0" expanded="true" />
+                <element signature="e#5383#5384#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_edit_task.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_task.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_add_task.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_task.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ShowTodoTasks.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowTodoTasks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
+            <state relative-caret-position="731">
               <caret line="72" column="77" lean-forward="false" selection-start-line="72" selection-start-column="77" selection-end-line="72" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dimens.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -100,33 +148,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="colors.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task_item_template.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/task_item_template.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="43" column="42" lean-forward="false" selection-start-line="43" selection-start-column="42" selection-end-line="43" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ShowDoneTasks.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ShowDoneTasks.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowDoneTasks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
+            <state relative-caret-position="232">
               <caret line="73" column="64" lean-forward="false" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
               <folding />
             </state>
@@ -1922,10 +1947,7 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_show_tasks.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowTasks.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/dropdown_item_template.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_task.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/LoginActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_task.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/TabbedTasks.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/sound.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/utilities/Utilities.java" />
@@ -1949,6 +1971,9 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowDoneTasks.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/remote/SOService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/AddTaskActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_edit_task.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_task.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/adapter/TaskAdapter.java" />
       </list>
     </option>
@@ -2046,6 +2071,46 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dimens.xml" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tasker-master" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tasker-master" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2490,7 +2555,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510743319596" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510744171613" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2538,7 +2603,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510743319596" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510744171613" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2721,7 +2786,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510743319596" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1510744171614" />
       </method>
     </configuration>
     <list size="1">
@@ -2879,7 +2944,14 @@
       <option name="project" value="LOCAL" />
       <updated>1510743318568</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Update tasks available">
+      <created>1510743323669</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1510743323669</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -3026,17 +3098,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_task.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2057">
-          <caret line="121" column="41" lean-forward="false" selection-start-line="121" selection-start-column="41" selection-end-line="121" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values-w820dp/dimens.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3065,29 +3126,6 @@
         <state relative-caret-position="197">
           <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_task.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="105" column="4" lean-forward="false" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="4" />
-          <folding>
-            <element signature="e#682#707#0" expanded="false" />
-            <element signature="e#774#789#0" expanded="false" />
-            <element signature="e#1218#1243#0" expanded="false" />
-            <element signature="e#1668#1695#0" expanded="false" />
-            <element signature="e#2162#2186#0" expanded="false" />
-            <element signature="e#2649#2678#0" expanded="false" />
-            <element signature="e#2704#2722#0" expanded="false" />
-            <element signature="e#3377#3406#0" expanded="false" />
-            <element signature="e#3659#3689#0" expanded="false" />
-            <element signature="e#3942#3971#0" expanded="false" />
-            <element signature="e#4843#4862#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/sound.xml" />
@@ -3151,14 +3189,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="11" lean-forward="false" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/TabbedTasks.java">
@@ -3279,14 +3309,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowTodoTasks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="72" column="77" lean-forward="false" selection-start-line="72" selection-start-column="77" selection-end-line="72" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sign_up.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -3303,14 +3325,6 @@
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowDoneTasks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="73" column="64" lean-forward="false" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/remote/SOService.java">
@@ -3352,16 +3366,62 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="32" lean-forward="false" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowTodoTasks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="731">
+          <caret line="72" column="77" lean-forward="false" selection-start-line="72" selection-start-column="77" selection-end-line="72" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_task.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="44" lean-forward="false" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_edit_task.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="44" lean-forward="false" selection-start-line="17" selection-start-column="44" selection-end-line="17" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/adapter/TaskAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="147" column="78" lean-forward="false" selection-start-line="147" selection-start-column="78" selection-end-line="147" selection-end-column="78" />
+        <state relative-caret-position="170">
+          <caret line="91" column="50" lean-forward="false" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="50" />
           <folding>
-            <element signature="e#2340#2599#0" expanded="true" />
-            <element signature="e#2598#2599#0" expanded="true" />
-            <element signature="e#5468#5469#0" expanded="true" />
-            <element signature="e#5497#5498#0" expanded="true" />
+            <element signature="e#2340#2485#0" expanded="true" />
+            <element signature="e#2484#2485#0" expanded="true" />
+            <element signature="e#5354#5355#0" expanded="true" />
+            <element signature="e#5383#5384#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/usuario/tasker/activities/fragments/ShowDoneTasks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="73" column="64" lean-forward="false" selection-start-line="73" selection-start-column="64" selection-end-line="73" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>

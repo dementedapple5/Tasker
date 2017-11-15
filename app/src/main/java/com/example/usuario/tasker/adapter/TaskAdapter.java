@@ -90,8 +90,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         checked.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 completeTask(position, finalView);
-                ShowTodoTasks.addTasks(ShowTodoTasks.v);
-                ShowDoneTasks.addTasks(ShowDoneTasks.v);
             }
         });
 
@@ -146,13 +144,13 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         req.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                notifyDataSetChanged();
 
                 ShowDoneTasks.adapter.clear();
                 ShowTodoTasks.adapter.clear();
                 ShowTodoTasks.addTasks(ShowTodoTasks.v);
                 ShowDoneTasks.addTasks(ShowDoneTasks.v);
 
+                notifyDataSetChanged();
             }
 
             @Override
