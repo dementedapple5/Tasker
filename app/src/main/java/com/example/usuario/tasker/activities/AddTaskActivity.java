@@ -134,6 +134,11 @@ public class AddTaskActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
 
+                    ShowDoneTasks.adapter.clear();
+                    ShowTodoTasks.adapter.clear();
+                    ShowTodoTasks.addTasks(ShowTodoTasks.v);
+                    ShowDoneTasks.addTasks(ShowDoneTasks.v);
+
                 }
 
                 @Override

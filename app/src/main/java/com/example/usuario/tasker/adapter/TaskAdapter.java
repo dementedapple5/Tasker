@@ -141,8 +141,12 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(context, "Tarea completada", Toast.LENGTH_SHORT).show();
-
                 notifyDataSetChanged();
+
+                ShowDoneTasks.adapter.clear();
+                ShowTodoTasks.adapter.clear();
+                ShowTodoTasks.addTasks(ShowTodoTasks.v);
+                ShowDoneTasks.addTasks(ShowDoneTasks.v);
 
             }
 
@@ -210,10 +214,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             ((Activity) context).startActivityForResult(intent,REQUEST_FOR_ACTIVITY_CODE);
 
-            ShowDoneTasks.adapter.clear();
-            ShowTodoTasks.adapter.clear();
-            ShowTodoTasks.addTasks(ShowTodoTasks.v);
-            ShowDoneTasks.addTasks(ShowDoneTasks.v);
         }
     }
 
