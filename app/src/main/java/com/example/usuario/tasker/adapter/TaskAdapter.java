@@ -164,6 +164,9 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         if(!items.contains(task)){
             items.add(task);
             this.notifyDataSetChanged();
+            Toast.makeText(context, "Tarea añadida", Toast.LENGTH_LONG).show();
+        }else {
+            Toast.makeText(context, "Tarea repetida", Toast.LENGTH_LONG).show();
         }
 
         Collections.sort(items);

@@ -133,7 +133,7 @@ public class AddTaskActivity extends AppCompatActivity {
             req.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-                    Toast.makeText(getApplicationContext(), "Tarea añadida", Toast.LENGTH_LONG).show();
+
                 }
 
                 @Override
