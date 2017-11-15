@@ -3,6 +3,7 @@ package com.example.usuario.tasker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,18 +85,18 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
         edit.setOnClickListener(this);
         final View finalView = view;
+        dir = items.get(position);
 
         checked.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 completeTask(position, finalView);
                 ShowTodoTasks.addTasks(ShowTodoTasks.v);
                 ShowDoneTasks.addTasks(ShowDoneTasks.v);
-
             }
         });
 
 
-        dir = items.get(position);
+
 
 
         int priority = dir.getPriority();
@@ -108,6 +109,11 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
         if (priority == 3){
             view.setBackgroundResource(R.drawable.minor_prior_task_border);
+        }
+
+        if (dir.isState()){
+            checked.setImageResource(R.drawable.ic_delete_black_24dp);
+            checked.setBackgroundColor(Color.parseColor("#B71C1C"));
         }
 
 
@@ -140,7 +146,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         req.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(context, "Tarea completada", Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
 
                 ShowDoneTasks.adapter.clear();
@@ -168,9 +173,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         if(!items.contains(task)){
             items.add(task);
             this.notifyDataSetChanged();
-            Toast.makeText(context, "Tarea añadida", Toast.LENGTH_LONG).show();
-        }else {
-            Toast.makeText(context, "Tarea repetida", Toast.LENGTH_LONG).show();
         }
 
         Collections.sort(items);

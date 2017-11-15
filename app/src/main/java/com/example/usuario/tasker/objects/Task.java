@@ -17,6 +17,7 @@ public class Task implements Comparable<Task> {
     private int priority;
     private String creationDate;
     private boolean state;
+    private boolean visible;
 
     public Task(String title, String attendant, String comment, String description, int priority) {
         this.title = title;
@@ -26,9 +27,12 @@ public class Task implements Comparable<Task> {
         this.priority = priority;
         this.creationDate = setCreationDate();
         this.state = false;
+        this.visible = true;
     }
 
-    public Task(String title, String attendant, String comment, String description, int priority, String date, boolean state) {
+
+
+    public Task(String title, String attendant, String comment, String description, int priority, String date, boolean state, boolean visible) {
         this.title = title;
         this.attendant = attendant;
         this.comment = comment;
@@ -36,12 +40,18 @@ public class Task implements Comparable<Task> {
         this.priority = priority;
         this.creationDate = date;
         this.state = state;
+        this.visible = visible;
     }
 
     private static String setCreationDate() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         return sdf.format(date);
+    }
+
+
+    public boolean isVisible() {
+        return visible;
     }
 
     public String getTitle() {
@@ -71,6 +81,8 @@ public class Task implements Comparable<Task> {
     public boolean isState() {
         return state;
     }
+
+
 
     @Override
     public String toString() {
@@ -121,4 +133,6 @@ public class Task implements Comparable<Task> {
         int comparePrior = this.getPriority() - (task.getPriority());
         return comparePrior == 0 ? this.getTitle().compareTo(task.getTitle()) : comparePrior;
     }
+
+
 }

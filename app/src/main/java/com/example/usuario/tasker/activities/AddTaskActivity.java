@@ -129,16 +129,14 @@ public class AddTaskActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "No se ha validado el formulario", Toast.LENGTH_LONG).show();
         } else {
             SOService service = ApiUtils.getSOService();
-            Call<Void> req = service.createTask(username, title, comment, desc, task.getPriority(), date, task.isState());
+            Call<Void> req = service.createTask(username, title, comment, desc, task.getPriority(), date, task.isState(),task.isVisible());
             req.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
-
                     ShowDoneTasks.adapter.clear();
                     ShowTodoTasks.adapter.clear();
                     ShowTodoTasks.addTasks(ShowTodoTasks.v);
                     ShowDoneTasks.addTasks(ShowDoneTasks.v);
-
                 }
 
                 @Override
@@ -148,10 +146,7 @@ public class AddTaskActivity extends AppCompatActivity {
             });
         }
 
-        ShowDoneTasks.adapter.clear();
-        ShowTodoTasks.adapter.clear();
-        ShowTodoTasks.addTasks(ShowTodoTasks.v);
-        ShowDoneTasks.addTasks(ShowDoneTasks.v);
+
     }
 
     private Boolean validarTask() {
