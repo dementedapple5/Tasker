@@ -8,6 +8,7 @@
     android:orientation="vertical"
     android:padding="10dp">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Título de la tarea"
-            android:textSize="@dimen/link"
+            android:textSize="@dimen/titles"
             android:textColor="@color/task_title"
             android:layout_marginTop="2dp"
             android:layout_weight="1"/>
@@ -28,12 +29,19 @@
             android:layout_width="@dimen/iconSize"
             android:layout_height="@dimen/iconSize"
             app:srcCompat="@drawable/ic_edit_black_24dp"
-            android:layout_marginTop="4dp"/>
+            android:layout_marginTop="4dp"
+            android:tint="@color/white"
+            android:background="@color/colorPrimaryDark"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"/>
 
-        <CheckBox
+        <ImageView
             android:id="@+id/item_done"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/iconSize"/>
+            android:layout_width="@dimen/iconSize"
+            android:layout_height="@dimen/iconSize"
+            app:srcCompat="@drawable/ic_done_black_24dp"
+            android:layout_marginTop="4dp"
+            android:tint="@color/white"
+            android:background="@color/minor_prior_task"/>
 
     </LinearLayout>
 
@@ -51,17 +59,28 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/comment"
+            android:textColor="@color/task_title"
+            android:text="Hola caracola"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            />
+
+        <TextView
             android:id="@+id/item_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Hay que hacer un backup del servidor" />
+            android:layout_marginTop="@dimen/activity_vertical_margin_half"
+            android:text="Hay que hacer un backup del servidor"/>
 
         <TextView
             android:id="@+id/item_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="31/10/2017"
+            android:textColor="@color/colorPrimaryDark"
             android:layout_gravity="right"/>
 
     </LinearLayout>

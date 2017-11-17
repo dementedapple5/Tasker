@@ -1,5 +1,9 @@
 package com.example.usuario.tasker.utilities;
 
+import android.media.MediaPlayer;
+
+import com.example.usuario.tasker.R;
+
 /**
  * Created by Dani on 31/10/2017.
  */
@@ -26,6 +30,5 @@ public class Utilities {
     public static final String USERNAME_PASSWORD_INCORRECT = "Usuario o contraseña incorrecta";
     public static final String PASSWORD_DONT_MATCH = "Las contraseñas no coinciden";
     public static final String SUCCESSFULL_USER_REGISTRATION = "Usuario registrado correctamente";
-
 
 }

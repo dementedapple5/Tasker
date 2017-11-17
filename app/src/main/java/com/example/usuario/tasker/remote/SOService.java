@@ -39,20 +39,20 @@ public interface SOService {
 
     @Multipart
     @POST("insert_tasks.php")
-    Call<Void> createTask(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("coments") RequestBody comment, @Part("contenido") RequestBody desc,@Part("prioridad") Integer prior,@Part("fecha") RequestBody date,@Part("estado") boolean state);
+    Call<Void> createTask(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("coments") RequestBody comment, @Part("contenido") RequestBody desc,@Part("prioridad") Integer prior,@Part("fecha") RequestBody date,@Part("estado") boolean state,@Part("visible") boolean visible);
 
 
     @POST("select_users.php")
     Call<List<UserPojo>> select_users();
 
     @Multipart
-    @POST("edit_tasks.php")
+    @POST("task_done.php")
     Call<Void> taskDone(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha);
 
-    @Multipart
-    @POST("edit_tasks_all.php")
-    Call<Void> taskEdit(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("fecha") RequestBody fecha,@Part("coments") RequestBody coments,@Part("prioridad") RequestBody prioridad,@Part("contenido") RequestBody contenido,@Part("estado") RequestBody estado);
 
+    @Multipart
+    @POST("task_update.php")
+    Call<Void> taskUpdate(@Part("encargado") RequestBody username, @Part("titulo") RequestBody title, @Part("coments") RequestBody fecha,@Part("prioridad") RequestBody prioridad,@Part("contenido") RequestBody contenido,@Part("encargadoBefore") RequestBody encargadoBefore,@Part("tituloBefore") RequestBody tituloBefore,@Part("fechaBefore") RequestBody fechaBefore);
 
     @Multipart
     @POST("create_user.php")

@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/signup_title"
-        android:textSize="@dimen/titles"
+        android:textSize="36sp"
         android:background="@color/colorPrimary"
         android:gravity="center"
         android:textColor="@color/white"
@@ -22,7 +22,7 @@
 
     <EditText
         android:id="@+id/et_signup_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -37,7 +37,7 @@
 
     <EditText
         android:id="@+id/et_signup_username"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
 
     <EditText
         android:id="@+id/et_signup_password"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
@@ -67,7 +67,7 @@
 
     <EditText
         android:id="@+id/et_signup_rpassword"
-        android:layout_width="215dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"

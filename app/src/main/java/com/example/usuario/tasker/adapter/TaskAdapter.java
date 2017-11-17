@@ -3,14 +3,12 @@ package com.example.usuario.tasker.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,11 +16,15 @@ import android.widget.Toast;
 
 import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.activities.EditTaskActivity;
+import com.example.usuario.tasker.activities.fragments.ShowDoneTasks;
+import com.example.usuario.tasker.activities.fragments.ShowTodoTasks;
 import com.example.usuario.tasker.objects.Task;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -36,18 +38,20 @@ import retrofit2.Response;
 
 public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
 
+
+    private static final int REQUEST_FOR_ACTIVITY_CODE = 1;
     protected Context context;
     protected ArrayList<Task> items;
-    private ImageView edit;
-    private CheckBox checked;
-    public final static int REQUEST_CODE = 1;
+    private ImageView edit, checked;
     Task dir;
-
+    private TextView title, comment, description, date;
 
     public TaskAdapter(Context context, ArrayList<Task> items) {
         this.context = context;
         this.items = items;
     }
+
+
 
 
     @Override
@@ -73,22 +77,24 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         view = inf.inflate(R.layout.task_item_template, null);
 
 
-        edit = (ImageView) view.findViewById(R.id.item_edit);
-        checked = (CheckBox) view.findViewById(R.id.item_done);
+
+        edit = view.findViewById(R.id.item_edit);
+        checked = view.findViewById(R.id.item_done);
 
         edit.setTag(position);
 
         edit.setOnClickListener(this);
-        checked.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                if (isChecked){
-                    completeTask(position);
-                }
+        final View finalView = view;
+        dir = items.get(position);
+
+        checked.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                completeTask(position, finalView);
             }
         });
 
-        dir = items.get(position);
+
+
 
 
         int priority = dir.getPriority();
@@ -103,48 +109,97 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             view.setBackgroundResource(R.drawable.minor_prior_task_border);
         }
 
+        if (dir.isState()){
+            checked.setImageResource(R.drawable.ic_delete_black_24dp);
+            checked.setBackgroundColor(Color.parseColor("#B71C1C"));
+        }
 
-        TextView title = view.findViewById(R.id.item_title);
+
+        title = view.findViewById(R.id.item_title);
         title.setText(dir.getTitle());
 
-        TextView description = view.findViewById(R.id.item_description);
+        comment = view.findViewById(R.id.tv_comment);
+        comment.setText(dir.getComment());
+
+        description = view.findViewById(R.id.item_description);
         description.setText(dir.getDescription());
 
-        TextView date = view.findViewById(R.id.item_date);
+        date = view.findViewById(R.id.item_date);
         date.setText(dir.getCreationDate());
 
         return view;
 
     }
 
-    public void completeTask(int position){
+    public void completeTask(int position, final View view){
         dir = items.get(position);
 
         RequestBody attendant = RequestBody.create(MediaType.parse("text/plain"), dir.getAttendant());
         RequestBody title = RequestBody.create(MediaType.parse("text/plain"), dir.getTitle());
         RequestBody date = RequestBody.create(MediaType.parse("text/plain"), dir.getCreationDate());
 
-            SOService service = ApiUtils.getSOService();
-            final Call<Void> req = service.taskDone(attendant,title,date);
-            req.enqueue(new Callback<Void>() {
-                @Override
-                public void onResponse(Call<Void> call, Response<Void> response) {
-                    Toast.makeText(context, "Tarea completada", Toast.LENGTH_LONG).show();
-                    Log.d("TITLE::",dir.getTitle());
-                }
 
-                @Override
-                public void onFailure(Call<Void> call, Throwable t) {
-                    Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_LONG).show();
-                }
-            });
+        SOService service = ApiUtils.getSOService();
+        final Call<Void> req = service.taskDone(attendant,title,date);
+        req.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
 
+                ShowDoneTasks.adapter.clear();
+                ShowTodoTasks.adapter.clear();
+                ShowTodoTasks.addTasks(ShowTodoTasks.v);
+                ShowDoneTasks.addTasks(ShowDoneTasks.v);
+
+                notifyDataSetChanged();
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(context, "Fallo al completar tarea", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        ShowDoneTasks.adapter.clear();
+        ShowTodoTasks.adapter.clear();
+        ShowTodoTasks.addTasks(ShowTodoTasks.v);
+        ShowDoneTasks.addTasks(ShowDoneTasks.v);
+    }
+
+    public void addItem(Task task){
+
+        if(!items.contains(task)){
+            items.add(task);
+            this.notifyDataSetChanged();
+        }
+
+        Collections.sort(items);
 
     }
+
+    public void removeItem(Task task) {
+        items.remove(task);
+        this.notifyDataSetChanged();
+        Collections.sort(items);
+    }
+
+    public void update(ArrayList<Task> tasks){
+        items.clear();
+        items.addAll(tasks);
+        this.notifyDataSetChanged();
+        Collections.sort(items);
+    }
+
+    public void clear(){
+        items.clear();
+    }
+
+
 
 
     @Override
     public void onClick(View view) {
+
         if (view.getId()==edit.getId()){
             Intent intent = new Intent(view.getContext(), EditTaskActivity.class);
             Bundle bundle = new Bundle();
@@ -156,9 +211,10 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
             bundle.putInt("TASK_PRIOR",items.get(position).getPriority());
             bundle.putString("TASK_USER",items.get(position).getAttendant());
             intent.putExtras(bundle);
-            context.startActivity(intent);
-        }
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            ((Activity) context).startActivityForResult(intent,REQUEST_FOR_ACTIVITY_CODE);
 
+        }
     }
 
 

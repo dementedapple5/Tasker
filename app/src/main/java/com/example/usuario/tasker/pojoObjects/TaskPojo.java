@@ -30,6 +30,10 @@ public class TaskPojo {
     @Expose
     private String estado;
 
+    @SerializedName("visible")
+    @Expose
+    private String visible;
+
     public String getId() {
         return id;
     }
@@ -42,61 +46,41 @@ public class TaskPojo {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getFecha() {
         return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
     }
 
     public String getEncargado() {
         return encargado;
     }
 
-    public void setEncargado(String encargado) {
-        this.encargado = encargado;
-    }
-
     public String getComents() {
         return coments;
-    }
-
-    public void setComents(String coments) {
-        this.coments = coments;
     }
 
     public String getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(String prioridad) {
-        this.prioridad = prioridad;
-    }
-
     public String getContenido() {
         return contenido;
     }
 
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
+    public boolean getVisible() {
+        if (visible.equals("0")){
+            return false;
+        }else {
+            return true;
+        }
     }
 
-    public Boolean getEstado() {
+    public boolean getEstado() {
         if (estado.equals("0")){
             return false;
         }else {
             return true;
         }
 
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
 }
