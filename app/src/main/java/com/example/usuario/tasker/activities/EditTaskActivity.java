@@ -154,10 +154,10 @@ public class EditTaskActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(getApplicationContext(), "Task edited", Toast.LENGTH_LONG).show();
 
-                /*ShowDoneTasks.adapter.clear();
+                ShowDoneTasks.adapter.clear();
                 ShowTodoTasks.adapter.clear();
                 ShowTodoTasks.addTasks(ShowTodoTasks.v);
-                ShowDoneTasks.addTasks(ShowDoneTasks.v);*/
+                ShowDoneTasks.addTasks(ShowDoneTasks.v);
             }
 
             @Override
@@ -166,10 +166,7 @@ public class EditTaskActivity extends AppCompatActivity {
             }
         });
 
-        ShowDoneTasks.adapter.clear();
-        ShowTodoTasks.adapter.clear();
-        ShowTodoTasks.addTasks(ShowTodoTasks.v);
-        ShowDoneTasks.addTasks(ShowDoneTasks.v);
+
         setResult(1);
         finish();
     }
