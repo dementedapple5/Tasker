@@ -30,6 +30,10 @@ public interface SOService {
     Call<ResponseBody> userExists(@Part("username") RequestBody username, @Part("pass") RequestBody pass);
 
     @Multipart
+    @POST("update_token.php")
+    Call<ResponseBody> updateToken(@Part("username") RequestBody username, @Part("pass") RequestBody pass, @Part("token") RequestBody token);
+
+    @Multipart
     @POST("select_tasks.php")
     Call<List<TaskPojo>> select_tasks(@Part("encargado") RequestBody username);
 
@@ -56,6 +60,6 @@ public interface SOService {
 
     @Multipart
     @POST("create_user.php")
-    Call<Void> createUser(@Part("username") String username, @Part("pass") String pass, @Part("name") String name);
+    Call<Void> createUser(@Part("username") String username, @Part("pass") String pass, @Part("name") String name,@Part("token") String token);
 
 }

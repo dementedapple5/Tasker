@@ -12,6 +12,7 @@ import com.example.usuario.tasker.R;
 import com.example.usuario.tasker.remote.ApiUtils;
 import com.example.usuario.tasker.remote.SOService;
 import com.example.usuario.tasker.utilities.Utilities;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,14 +43,18 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void registerUser() {
         final String username = etUsername.getText().toString().trim();
         final String password = etPassword.getText().toString().trim();
+
         String rPassword = etRpassword.getText().toString().trim();
         final String name = etName.getText().toString().trim();
+
+        final String token = FirebaseInstanceId.getInstance().getToken();
+
         if (rPassword.equals(password)) {
 
             SOService service = ApiUtils.getSOService();
             Log.d("USERNAME", username);
             Log.d("PASSWORD", password);
-            Call<Void> req = service.createUser(username, password, name);
+            Call<Void> req = service.createUser(username, password, name, token);
             req.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

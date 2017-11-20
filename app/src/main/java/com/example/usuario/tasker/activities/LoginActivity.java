@@ -121,6 +121,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        sendRegistrationToServer(FirebaseInstanceId.getInstance().getToken());
+
+
     }
 
 
@@ -165,6 +168,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public void sendRegistrationToServer(String refreshedToken){
+        String usernameStr = etUsername.getText().toString().trim();
+        String passwordStr = etPassword.getText().toString().trim();
+        SOService service = ApiUtils.getSOService();
+        RequestBody token = RequestBody.create(MediaType.parse("text/plain"), refreshedToken);
+        RequestBody username = RequestBody.create(MediaType.parse("text/plain"), usernameStr);
+        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), passwordStr);
+
+        Call<ResponseBody> req = service.updateToken(username,password,token);
+        req.enqueue(new Callback<ResponseBody>() {
+
+
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+
+
         //insertar bd interna o server o ambas
 
     }
