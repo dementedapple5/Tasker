@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "865468027849",
+    "firebase_url": "https://tasker-259a3.firebaseio.com",
+    "project_id": "tasker-259a3",
+    "storage_bucket": "tasker-259a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865468027849:android:67edfcf5f72715b8",
+        "android_client_info": {
+          "package_name": "com.example.usuario.tasker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865468027849-0e8f9qhs9ab4plfbvil1feur578g01en.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdc3tJV_iRDp86CMmo68NwAd90kp8OdTQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
