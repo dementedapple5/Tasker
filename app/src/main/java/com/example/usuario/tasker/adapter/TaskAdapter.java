@@ -160,10 +160,6 @@ public class TaskAdapter extends BaseAdapter implements View.OnClickListener{
         });
 
 
-        ShowDoneTasks.adapter.clear();
-        ShowTodoTasks.adapter.clear();
-        ShowTodoTasks.addTasks(ShowTodoTasks.v);
-        ShowDoneTasks.addTasks(ShowDoneTasks.v);
     }
 
     public void addItem(Task task){
