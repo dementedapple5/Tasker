@@ -1,6 +1,7 @@
 <application>
   <component name="GithubSettings">
-    <option name="HOST" value="" />
-    <option name="VALID_GIT_AUTH" value="false" />
+    <option name="LOGIN" value="Ethan94ESP" />
+    <option name="HOST" value="https://github.com" />
+    <option name="AUTH_TYPE" value="BASIC" />
   </component>
 </application>
