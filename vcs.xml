@@ -18,6 +18,10 @@
           <option name="url" value="https://github.com/woxblom/DragListView.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/pooja-gaikwad15/recyclerview-list-drag-and-drop.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\Ethan\Desktop\Workspace\Android" />
