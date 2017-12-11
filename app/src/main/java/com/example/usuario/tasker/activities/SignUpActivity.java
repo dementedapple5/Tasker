@@ -14,6 +14,8 @@ import com.example.usuario.tasker.remote.SOService;
 import com.example.usuario.tasker.utilities.Utilities;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,7 +56,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             SOService service = ApiUtils.getSOService();
             Log.d("USERNAME", username);
             Log.d("PASSWORD", password);
-            Call<Void> req = service.createUser(username, password, name, token);
+
+            RequestBody usernameReq = RequestBody.create(MediaType.parse("text/plain"), username);
+            RequestBody passReq = RequestBody.create(MediaType.parse("text/plain"), password);
+            RequestBody nameReq = RequestBody.create(MediaType.parse("text/plain"), name);
+
+            Call<Void> req = service.createUser(usernameReq, passReq, nameReq, token);
             req.enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

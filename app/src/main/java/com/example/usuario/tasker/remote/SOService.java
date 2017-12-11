@@ -60,6 +60,6 @@ public interface SOService {
 
     @Multipart
     @POST("create_user.php")
-    Call<Void> createUser(@Part("username") String username, @Part("pass") String pass, @Part("name") String name,@Part("token") String token);
+    Call<Void> createUser(@Part("username") RequestBody username, @Part("pass") RequestBody pass, @Part("name") RequestBody name,@Part("token") String token);
 
 }

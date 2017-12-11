@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Tasker.iml" filepath="$PROJECT_DIR$/Tasker.iml" />
       <module fileurl="file://C:\Users\Samuel\StudioProjects\Tasker\.idea\modules\Tasker.iml" filepath="C:\Users\Samuel\StudioProjects\Tasker\.idea\modules\Tasker.iml" />
       <module fileurl="file://C:\Users\Dani\AndroidStudioProjects\Tasker-master\Tasker.iml" filepath="C:\Users\Dani\AndroidStudioProjects\Tasker-master\Tasker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Tasker-master.iml" filepath="$PROJECT_DIR$/Tasker-master.iml" />
       <module fileurl="file://C:\Users\Ethan\Desktop\Workspace\Android\Tasker\Tasker-master.iml" filepath="C:\Users\Ethan\Desktop\Workspace\Android\Tasker\Tasker-master.iml" />
       <module fileurl="file://C:\Users\Samuel\git\Tasker\Tasker-master.iml" filepath="C:\Users\Samuel\git\Tasker\Tasker-master.iml" />
       <module fileurl="file://C:\Users\samuel\AndroidStudioProjects\Tasker\Tasker-master.iml" filepath="C:\Users\samuel\AndroidStudioProjects\Tasker\Tasker-master.iml" />

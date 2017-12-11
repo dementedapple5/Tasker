@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.design.widget.TextInputEditText;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,18 +39,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText etUsername, etPassword;
     private Button btnLogin, btnSignUp;
     private CheckBox checkRemember;
+    private TextInputLayout passWrapper, userWrapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        etUsername = findViewById(R.id.et_username);
+        etPassword = findViewById(R.id.et_password);
+        passWrapper = findViewById(R.id.pass_wrapper);
+        userWrapper = findViewById(R.id.user_wrapper);
+        btnLogin = findViewById(R.id.btn_login);
+        btnSignUp = findViewById(R.id.btn_signup);
+        checkRemember = findViewById(R.id.check_remember);
 
-        etUsername = (EditText) findViewById(R.id.et_username);
-        etPassword = (EditText) findViewById(R.id.et_password);
-        btnLogin = (Button) findViewById(R.id.btn_login);
-        btnSignUp = (Button) findViewById(R.id.btn_signup);
-        checkRemember = (CheckBox) findViewById(R.id.check_remember);
+        passWrapper.setHint("Password");
+        userWrapper.setHint("Username");
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String name = preferences.getString("NAME", "");

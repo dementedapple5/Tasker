@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Tasker</string>
     <string name="login_text">LOGIN</string>
-    <string name="username_hint">USERNAME</string>
-    <string name="name_hint">NAME</string>
-    <string name="password_hint">PASSWORD</string>
-    <string name="re_password_hint">RETYPE PASSWORD</string>
+    <string name="username_hint">Username</string>
+    <string name="name_hint">Name</string>
+    <string name="password_hint">Password</string>
+    <string name="re_password_hint">Retype Password</string>
     <string name="not_signed_up_yet">Click here to SignUp</string>
     <string name="remember_user">Remember me on this device</string>
     <string name="add_task_title">ADD TASK</string>
