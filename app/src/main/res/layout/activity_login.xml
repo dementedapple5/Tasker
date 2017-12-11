@@ -34,9 +34,6 @@
                 android:id="@+id/user_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:passwordToggleContentDescription="@string/description"
-                app:passwordToggleDrawable="@drawable/another_toggle_drawable"
-                app:passwordToggleEnabled="true"
                 app:hintEnabled="true"
                 app:passwordToggleTint="@color/colorPrimary">
 
