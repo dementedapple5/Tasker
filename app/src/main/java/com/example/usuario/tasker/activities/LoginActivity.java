@@ -63,6 +63,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (!name.equalsIgnoreCase("") && !password.equalsIgnoreCase("")) {
             etUsername.setText(name);
             etPassword.setText(password);
+            login();
         }
 
         checkRemember.setOnClickListener(this);
