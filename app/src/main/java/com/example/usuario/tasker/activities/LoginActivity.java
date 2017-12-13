@@ -5,13 +5,17 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.design.widget.CheckableImageButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -35,11 +39,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, View.OnTouchListener {
     private EditText etUsername, etPassword;
     private Button btnLogin, btnSignUp;
     private CheckBox checkRemember;
     private TextInputLayout passWrapper, userWrapper;
+    private View togglePasswordButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin = findViewById(R.id.btn_login);
         btnSignUp = findViewById(R.id.btn_signup);
         checkRemember = findViewById(R.id.check_remember);
+        togglePasswordButton = findTogglePasswordButton(passWrapper);
 
         passWrapper.setHint("Password");
         userWrapper.setHint("Username");
@@ -66,6 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             login();
         }
 
+        togglePasswordButton.setOnTouchListener(this);
         checkRemember.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
@@ -134,16 +141,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        switch ( motionEvent.getAction() ) {
+            case MotionEvent.ACTION_DOWN:
+                etPassword.setInputType(InputType.TYPE_CLASS_TEXT);
+                break;
+            case MotionEvent.ACTION_UP:
+                etPassword.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                break;
+        }
+
+        return true;
+    }
+
 
     public static class MyFirebaseMessagingService extends FirebaseMessagingService {
         String title, text;
 
         @Override
         public void onMessageReceived(RemoteMessage remoteMessage) {
-            // TODO: Handle FCM messages here.
-            // If the application is in the foreground handle both data and notification messages here.
-            // Also if you intend on generating your own notifications as a result of a received FCM
-            // message, here is where that should be initiated.
+
             title = remoteMessage.getNotification().getTitle();
             text = remoteMessage.getNotification().getBody();
             android.support.v4.app.NotificationCompat.Builder mBuilder;
@@ -175,7 +193,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    public void sendRegistrationToServer(String refreshedToken){
+    public void sendRegistrationToServer(String refreshedToken) {
         String usernameStr = etUsername.getText().toString().trim();
         String passwordStr = etPassword.getText().toString().trim();
         SOService service = ApiUtils.getSOService();
@@ -183,7 +201,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         RequestBody username = RequestBody.create(MediaType.parse("text/plain"), usernameStr);
         RequestBody password = RequestBody.create(MediaType.parse("text/plain"), passwordStr);
 
-        Call<ResponseBody> req = service.updateToken(username,password,token);
+        Call<ResponseBody> req = service.updateToken(username, password, token);
         req.enqueue(new Callback<ResponseBody>() {
 
 
@@ -200,18 +218,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
 
-        //insertar bd interna o server o ambas
-
     }
 
+    private View findTogglePasswordButton(ViewGroup viewGroup) {
+        int childCount = viewGroup.getChildCount();
+        for (int ind = 0; ind < childCount; ind++) {
+            View child = viewGroup.getChildAt(ind);
+            if (child instanceof ViewGroup) {
+                View togglePasswordButton = findTogglePasswordButton((ViewGroup) child);
+                if (togglePasswordButton != null) {
+                    return togglePasswordButton;
+                }
+            } else if (child instanceof CheckableImageButton) {
+                return child;
+            }
+        }
+        return null;
 
-    /*
-    Server Key
-    AAAAyYHqE8k:APA91bF9mmd3oYy4mnoAgebS_mlod6Qyw6munRYLj0DGkEg5faZ8JOml0gwqMDIbc50s0hGj8Pelfo654ACZD69TFrEJ5SZea-xlW-bRU4651OoZK6JReACP8FRWnwWOm_yAGmc7p1Wz
-    *
-    *
-    *
-    *
-    * */
+    }
 
 }

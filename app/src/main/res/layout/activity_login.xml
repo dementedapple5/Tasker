@@ -46,24 +46,25 @@
 
             </android.support.design.widget.TextInputLayout>
 
+
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/pass_wrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:passwordToggleContentDescription="@string/description"
-                app:passwordToggleDrawable="@drawable/another_toggle_drawable"
-                app:passwordToggleEnabled="true"
                 app:hintEnabled="true"
-                app:passwordToggleTint="@color/colorPrimary">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleDrawable="@drawable/another_toggle_drawable">
 
-                <EditText
-                    android:id="@+id/et_password"
-                    android:layout_marginTop="16dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPassword"/>
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_marginTop="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"/>
 
             </android.support.design.widget.TextInputLayout>
+
 
             <CheckBox
                 android:id="@+id/check_remember"
